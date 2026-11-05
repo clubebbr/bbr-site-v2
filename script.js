@@ -50,7 +50,7 @@ async function verMembrosDoClube(tag) {
         listEl.innerHTML = '<p>Carregando membros...</p>';
         modal.style.display = 'flex';
 
-        const response = await fetch(`/api/club/${cleanTag}`);
+        const response = await fetch(`https://bbr-brawl-stars.onrender.com/api/club/${cleanTag}`);
         if (!response.ok) throw new Error('Clube não encontrado');
         
         const clubData = await response.json();
