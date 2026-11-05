@@ -88,7 +88,7 @@ async function verMembrosDoClube(tag) {
 async function fetchClubData(tag) {
     try {
         const cleanTag = tag.replace('#', '');
-        const res = await fetch(`/api/club/${cleanTag}`);
+        const res = await fetch(`https://bbr-brawl-stars.onrender.com/api/club/${cleanTag}`);
         if (!res.ok) return null;
         return await res.json();
     } catch (err) {
@@ -544,7 +544,7 @@ async function loadRankedRanking() {
     if (!tbody) return;
 
     try {
-        const response = await fetch('/api/ranked');
+        const response = await fetch('https://bbr-brawl-stars.onrender.com/api/ranked');
 
         if (!response.ok) {
             throw new Error('Erro ao consultar a Ranqueada');
