@@ -140,7 +140,7 @@ async function loadDashboardData() {
                     </div>
                 </div>
                 <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"><strong>Troféus:</strong> ${Number(club.trophies || 0).toLocaleString("pt-BR")}</p>
-                <p><strong>Membros:</strong> 👥 ${memberCount}/30</p>
+                <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_members.svg" alt="Membros" style="width: 18px; height: 18px; object-fit: contain;"><strong>Membros:</strong> ${memberCount}/30</p>
                 ${availableSpots > 0 ? `<p style="color: #4ade80; font-weight: 700; margin-top: 6px;">🟢 ${availableSpots} ${availableSpots === 1 ? "vaga disponível" : "vagas disponíveis"}</p>` : ""}
             `;
             clubGrid.appendChild(card);
