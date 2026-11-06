@@ -302,8 +302,6 @@ Object.assign(document.createElement('img'), {
     // Monta a tabela completa
     filtered.forEach(({ player, index }) => {
         const tr = document.createElement('tr');
-        const sponsor = isRankedSponsor(player);
-        if (sponsor) tr.classList.add('ranked-sponsor-row');
 
         const position = rankingText('td', '', '#' + (index + 1));
         
@@ -698,6 +696,8 @@ function renderRankedRanking() {
 
     filtered.forEach(({ player, index }) => {
         const tr = document.createElement('tr');
+        const sponsor = isRankedSponsor(player);
+        if (sponsor) tr.classList.add('ranked-sponsor-row');
 
         const position = rankingText(
             'td', '', '#' + (index + 1)
