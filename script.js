@@ -302,6 +302,8 @@ Object.assign(document.createElement('img'), {
     // Monta a tabela completa
     filtered.forEach(({ player, index }) => {
         const tr = document.createElement('tr');
+        const sponsor = isRankedSponsor(player);
+        if (sponsor) tr.classList.add('ranked-sponsor-row');
 
         const position = rankingText('td', '', '#' + (index + 1));
         
@@ -589,6 +591,14 @@ async function loadRankedRanking() {
     }
 }
 
+// Patrocinador da temporada: altere somente a tag abaixo na próxima temporada.
+const RANKED_SPONSOR_TAG = '#PLY9L9QPR';
+
+function isRankedSponsor(player) {
+    return String(player.tag || '').replace('#', '').toUpperCase() ===
+        RANKED_SPONSOR_TAG.replace('#', '').toUpperCase();
+}
+
 function renderRankedRanking() {
     const tbody = document.getElementById('ranked-tbody');
     const podium = document.getElementById('ranked-podium');
@@ -658,6 +668,11 @@ function renderRankedRanking() {
 
             );
 
+            if (isRankedSponsor(player)) {
+                card.classList.add('ranked-sponsor-podium');
+                card.appendChild(rankingText('span', 'ranked-sponsor-badge', '★ PATROCINADOR'));
+            }
+
             podium.appendChild(card);
         });
     }
@@ -700,6 +715,11 @@ function renderRankedRanking() {
             avatar,
             rankingText('strong', '', player.name)
         );
+
+        if (sponsor) {
+            const sponsorBadge = rankingText('span', 'ranked-sponsor-badge', '★ PATROCINADOR');
+            name.appendChild(sponsorBadge);
+        }
 
 
 const club = document.createElement('td');
