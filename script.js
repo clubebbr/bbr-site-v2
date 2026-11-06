@@ -122,6 +122,8 @@ async function loadDashboardData() {
         clubTrophies.push(club.trophies || 0);
 
         if (clubGrid) {
+            const memberCount = club.members?.length ?? club.membersCount ?? 0;
+            const availableSpots = Math.max(0, 30 - memberCount);
             const card = document.createElement('div');
             card.className = 'club-card';
             card.style.cursor = 'pointer';
@@ -138,7 +140,8 @@ async function loadDashboardData() {
                     </div>
                 </div>
                 <p><strong>Troféus:</strong> 🏆 ${club.trophies?.toLocaleString() || 0}</p>
-                <p><strong>Membros:</strong> 👥 ${club.members?.length || 0}/30</p>
+                <p><strong>Membros:</strong> 👥 ${memberCount}/30</p>
+                ${availableSpots > 0 ? `<p style="color: #4ade80; font-weight: 700; margin-top: 6px;">🟢 ${availableSpots} ${availableSpots === 1 ? "vaga disponível" : "vagas disponíveis"}</p>` : ""}
             `;
             clubGrid.appendChild(card);
         }
