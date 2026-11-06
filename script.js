@@ -71,7 +71,7 @@ async function verMembrosDoClube(tag) {
                         <div style="font-size: 12px; color: #aaa;">${member.tag}</div>
                         </div>
                     </div>
-                    <span>🏆 ${member.trophies.toLocaleString()}</span>
+                    <span style="display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"> <strong>Troféus:</strong> ${Number(member.trophies || 0).toLocaleString("pt-BR")}</span>
                 `;
                 listEl.appendChild(memberCard);
             });
@@ -139,7 +139,7 @@ async function loadDashboardData() {
                         <p class="subtext" style="margin: 0;">${club.tag}</p>
                     </div>
                 </div>
-                <p><strong>Troféus:</strong> 🏆 ${club.trophies?.toLocaleString() || 0}</p>
+                <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"><strong>Troféus:</strong> ${Number(club.trophies || 0).toLocaleString("pt-BR")}</p>
                 <p><strong>Membros:</strong> 👥 ${memberCount}/30</p>
                 ${availableSpots > 0 ? `<p style="color: #4ade80; font-weight: 700; margin-top: 6px;">🟢 ${availableSpots} ${availableSpots === 1 ? "vaga disponível" : "vagas disponíveis"}</p>` : ""}
             `;
