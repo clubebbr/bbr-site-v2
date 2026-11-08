@@ -71,7 +71,7 @@ async function verMembrosDoClube(tag) {
                         <div style="font-size: 12px; color: #aaa;">${member.tag}</div>
                         </div>
                     </div>
-                    <span style="display: inline-flex; align-items: center; gap: 5px; white-space: nowrap;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"> <strong>Troféus:</strong> ${Number(member.trophies || 0).toLocaleString("pt-BR")}</span>
+                    <span style="display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; flex-shrink: 0; font-size: 14px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"> ${Number(member.trophies || 0).toLocaleString("pt-BR")}</span>
                 `;
                 listEl.appendChild(memberCard);
             });
