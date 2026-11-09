@@ -76,16 +76,6 @@ app.get('/api/players/:tag', async (req, res) => {
     }
 });
 
-app.get('/api/halloween', (req, res) => {
-    try {
-        const data = require('./halloween.json');
-        res.json(data);
-    } catch (error) {
-        res.status(500).json({ error: 'Erro ao carregar dados do Halloween' });
-    }
-});
-
-
 /* Ranking Ranqueado BBR — inicialmente Esports */
 const RANKED_CLUB_TAGS = ['882UJP9GR'];
 const RANKED_CACHE_MS = 15 * 60 * 1000;
