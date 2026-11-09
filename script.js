@@ -279,7 +279,8 @@ Object.assign(document.createElement('img'), {
     // Filtra sem perder a posição original
     const filtered = rankingMembers
         .map((player, index) => ({ player, index }))
-        .filter(({ player }) =>
+        .filter(({ player, index }) =>
+            (Boolean(term) || index >= 3) &&
             rankingNormalize(player.name).includes(term)
         );
 
@@ -678,7 +679,8 @@ function renderRankedRanking() {
     // Pesquisa sem perder a posição original
     const filtered = rankedMembers
         .map((player, index) => ({ player, index }))
-        .filter(({ player }) =>
+        .filter(({ player, index }) =>
+            (Boolean(term) || index >= 3) &&
             rankingNormalize(player.name).includes(term)
         );
 
