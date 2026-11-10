@@ -771,3 +771,24 @@ body {
         gap: 4px;
     }
 }
+
+/* Pódios: clube e cargo lado a lado, com quebra segura no celular */
+.podium-card .podium-club-with-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 6px;
+    row-gap: 4px;
+    max-width: 100%;
+}
+.podium-card .podium-club-with-badges .ranking-badges {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+}
