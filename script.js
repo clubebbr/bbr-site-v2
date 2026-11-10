@@ -137,6 +137,12 @@ async function loadDashboardData() {
         if (clubGrid) {
             const memberCount = club.members?.length ?? club.membersCount ?? 0;
             const availableSpots = Math.max(0, 30 - memberCount);
+            const normalizedTag = String(club.tag || '').replace('#', '').toUpperCase();
+            const clubDescription = normalizedTag === '882UJP9GR'
+                ? 'Ranqueado · Lendária 1+'
+                : normalizedTag === '882GLYJ8C'
+                    ? 'Troféus · 100 mil+'
+                    : 'Clube geral · 20 mil+';
             const card = document.createElement('div');
             card.className = 'club-card';
             card.style.cursor = 'pointer';
@@ -150,6 +156,7 @@ async function loadDashboardData() {
                     <div>
                         <h3 style="margin: 0;">${club.name}</h3>
                         <p class="subtext" style="margin: 0;">${club.tag}</p>
+                        <p class="subtext" style="margin: 3px 0 0; font-size: 0.85rem;">${clubDescription}</p>
                     </div>
                 </div>
                 <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"><strong>Troféus:</strong> ${Number(club.trophies || 0).toLocaleString("pt-BR")}</p>
