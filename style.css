@@ -710,3 +710,35 @@ body {
     .ranking-badges .ranked-sponsor-badge { font-size: 0.52rem; padding: 2px 5px; }
     .podium-card .ranking-badges { margin: 6px auto 0; }
 }
+
+/* Padronização das etiquetas e quebra segura no celular */
+.ranking-badges .ranked-sponsor-badge {
+    font-size: 0.58rem;
+    padding: 2px 6px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+}
+#ranqueada .data-table td:nth-child(2),
+#ranking .data-table td:nth-child(2) {
+    min-width: 0;
+}
+@media (max-width: 600px) {
+    .ranking-badges {
+        display: flex;
+        width: fit-content;
+        max-width: 100%;
+        margin: 5px 0 0;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    .ranking-badges .club-role-badge,
+    .ranking-badges .ranked-sponsor-badge {
+        font-size: 0.53rem;
+        padding: 1px 5px;
+        line-height: 1.5;
+    }
+    .podium-card .ranking-badges {
+        justify-content: center;
+        margin: 6px auto 0;
+    }
+}
