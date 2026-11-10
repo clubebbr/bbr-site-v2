@@ -168,9 +168,12 @@ async function loadDashboardData() {
 
         if (club.members) {
             club.members.forEach(member => {
+                clubMemberRoles.set(normalizePlayerTag(member.tag), member.role);
                 
 allMembers.push({
     name: member.name,
+    tag: member.tag,
+    role: member.role,
     trophies: member.trophies,
     clubName: club.name,
     iconId: member.icon?.id || 28000000
@@ -181,6 +184,7 @@ allMembers.push({
     });
 
     renderRanking(allMembers);
+    if (rankedMembers.length) renderRankedRanking();
     if (clubNames.length > 0) {
         renderChart(clubNames, clubTrophies);
     }
@@ -193,6 +197,29 @@ allMembers.push({
 ========================================== */
 
 let rankingMembers = [];
+const clubMemberRoles = new Map();
+function normalizePlayerTag(tag) {
+    return String(tag || '').replace('#', '').toUpperCase();
+}
+function appendPlayerBadges(container, player) {
+    const role = String(player.role || clubMemberRoles.get(normalizePlayerTag(player.tag)) || '')
+        .toLowerCase().replace(/[^a-z]/g, '');
+    const roles = {
+        president: ['PRESIDENTE', 'president'],
+        vicepresident: ['VICE-PRESIDENTE', 'vice-president'],
+        senior: ['PERITO', 'senior']
+    };
+    const badges = document.createElement('span');
+    badges.className = 'ranking-badges';
+    if (roles[role]) {
+        badges.appendChild(rankingText('span', 'club-role-badge club-role-' + roles[role][1], '★ ' + roles[role][0]));
+    }
+    if (isRankedSponsor(player)) {
+        badges.appendChild(rankingText('span', 'ranked-sponsor-badge', '★ PATROCINADOR'));
+    }
+    if (badges.childElementCount) container.appendChild(badges);
+}
+
 
 // Normaliza os nomes para facilitar a pesquisa
 function rankingNormalize(value) {
@@ -292,6 +319,7 @@ Object.assign(document.createElement('img'), {
 
             );
 
+            appendPlayerBadges(card, player);
             podium.appendChild(card);
         });
     }
@@ -337,6 +365,7 @@ name.append(
     avatar,
     rankingText('strong', '', player.name)
 );
+appendPlayerBadges(name, player);
 
 
         const club = document.createElement('td');
@@ -648,11 +677,9 @@ function renderRankedRanking() {
 
             );
 
-            if (isRankedSponsor(player)) {
-                card.classList.add('ranked-sponsor-podium');
-                card.appendChild(rankingText('span', 'ranked-sponsor-badge', '★ PATROCINADOR'));
-            }
+            if (isRankedSponsor(player)) card.classList.add('ranked-sponsor-podium');
 
+            appendPlayerBadges(card, player);
             podium.appendChild(card);
         });
     }
@@ -699,10 +726,7 @@ function renderRankedRanking() {
             rankingText('strong', '', player.name)
         );
 
-        if (sponsor) {
-            const sponsorBadge = rankingText('span', 'ranked-sponsor-badge', '★ PATROCINADOR');
-            name.appendChild(sponsorBadge);
-        }
+        appendPlayerBadges(name, player);
 
 
 const club = document.createElement('td');
