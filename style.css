@@ -684,3 +684,29 @@ body {
 @media (max-width: 600px) {
     .club-role-badge { font-size: 0.53rem; padding: 1px 5px; margin-left: 4px; }
 }
+
+/* Etiquetas de cargos e patrocinador nos dois rankings */
+.ranking-badges {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    vertical-align: middle;
+    margin-left: 6px;
+    max-width: 100%;
+}
+.ranking-badges .club-role-badge,
+.ranking-badges .ranked-sponsor-badge {
+    margin: 0;
+}
+.podium-card .ranking-badges {
+    display: flex;
+    justify-content: center;
+    margin: 8px auto 0;
+}
+@media (max-width: 600px) {
+    .ranking-badges { gap: 3px; margin-left: 4px; }
+    .ranking-badges .club-role-badge,
+    .ranking-badges .ranked-sponsor-badge { font-size: 0.52rem; padding: 2px 5px; }
+    .podium-card .ranking-badges { margin: 6px auto 0; }
+}
