@@ -73,6 +73,19 @@ async function verMembrosDoClube(tag) {
                     </div>
                     <span style="display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; flex-shrink: 0; font-size: 14px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"> ${Number(member.trophies || 0).toLocaleString("pt-BR")}</span>
                 `;
+                // Exibe apenas cargos de liderança, usando o role retornado pela API.
+                const role = String(member.role || '').toLowerCase().replace(/[^a-z]/g, '');
+                const roles = {
+                    president: ['PRESIDENTE', 'president'],
+                    vicepresident: ['VICE-PRESIDENTE', 'vice-president'],
+                    senior: ['PERITO', 'senior']
+                };
+                if (roles[role]) {
+                    const badge = document.createElement('span');
+                    badge.className = 'club-role-badge club-role-' + roles[role][1];
+                    badge.textContent = '★ ' + roles[role][0];
+                    memberCard.querySelector('strong').insertAdjacentElement('afterend', badge);
+                }
                 listEl.appendChild(memberCard);
             });
         } else {
