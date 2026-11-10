@@ -319,7 +319,11 @@ Object.assign(document.createElement('img'), {
 
             );
 
-            appendPlayerBadges(card, player);
+            const clubLine = card.querySelector('.podium-club');
+            if (clubLine) {
+                clubLine.classList.add('podium-club-with-badges');
+                appendPlayerBadges(clubLine, player);
+            }
             podium.appendChild(card);
         });
     }
@@ -679,7 +683,11 @@ function renderRankedRanking() {
 
             if (isRankedSponsor(player)) card.classList.add('ranked-sponsor-podium');
 
-            appendPlayerBadges(card, player);
+            const clubLine = card.querySelector('.podium-club');
+            if (clubLine) {
+                clubLine.classList.add('podium-club-with-badges');
+                appendPlayerBadges(clubLine, player);
+            }
             podium.appendChild(card);
         });
     }
