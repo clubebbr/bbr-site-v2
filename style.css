@@ -635,21 +635,21 @@ body {
 
 /* Patrocinador da temporada no Ranking Ranqueado */
 #ranqueada .data-table tr.ranked-sponsor-row td {
-    background: linear-gradient(100deg, rgba(118, 57, 169, 0.38), rgba(189, 139, 42, 0.22));
-    border-top: 1px solid rgba(255, 210, 105, 0.55);
-    border-bottom: 1px solid rgba(255, 210, 105, 0.55);
+    background: linear-gradient(100deg, rgba(43, 114, 145, 0.34), rgba(34, 175, 205, 0.15));
+    border-top: 1px solid rgba(84, 217, 255, 0.55);
+    border-bottom: 1px solid rgba(84, 217, 255, 0.55);
 }
 #ranqueada .data-table tr.ranked-sponsor-row td:first-child {
-    border-left: 3px solid #ffd56e;
+    border-left: 3px solid #54d9ff;
 }
 .ranked-sponsor-badge {
     display: inline-block;
     margin-left: 9px;
     padding: 3px 8px;
-    border: 1px solid rgba(255, 213, 110, 0.75);
+    border: 1px solid rgba(84, 217, 255, 0.75);
     border-radius: 999px;
-    background: rgba(110, 69, 15, 0.38);
-    color: #ffe19a;
+    background: rgba(15, 90, 115, 0.30);
+    color: #54d9ff;
     font-size: 0.67rem;
     font-weight: 800;
     letter-spacing: 0.035em;
@@ -657,8 +657,8 @@ body {
     white-space: nowrap;
 }
 .ranked-sponsor-podium {
-    border-color: #ffd56e;
-    box-shadow: inset 0 0 20px rgba(255, 213, 110, 0.12);
+    border-color: #54d9ff;
+    box-shadow: inset 0 0 20px rgba(84, 217, 255, 0.12);
 }
 .ranked-sponsor-podium .ranked-sponsor-badge {
     margin: 8px auto 0;
