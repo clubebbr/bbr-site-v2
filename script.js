@@ -139,10 +139,10 @@ async function loadDashboardData() {
             const availableSpots = Math.max(0, 30 - memberCount);
             const normalizedTag = String(club.tag || '').replace('#', '').toUpperCase();
             const clubDescription = normalizedTag === '882UJP9GR'
-                ? 'Ranqueado · Lendária 1+'
+                ? 'Lendária 1+'
                 : normalizedTag === 'CQYU8RQP'
-                    ? 'Troféus · 100 mil+'
-                    : 'Clube geral · 20 mil+';
+                    ? '100k de troféus acima'
+                    : '20k de troféus acima';
             const card = document.createElement('div');
             card.className = 'club-card';
             card.style.cursor = 'pointer';
