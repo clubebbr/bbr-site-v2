@@ -663,3 +663,24 @@ body {
 .ranked-sponsor-podium .ranked-sponsor-badge {
     margin: 8px auto 0;
 }
+
+/* Cargos dos membros na janela de clubes */
+.club-role-badge {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 6px;
+    padding: 2px 6px;
+    border: 1px solid currentColor;
+    border-radius: 999px;
+    font-size: 0.58rem;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+.club-role-president { color: #ffd56e; background: rgba(255, 213, 110, 0.12); }
+.club-role-vice-president { color: #d8a2ff; background: rgba(180, 100, 255, 0.12); }
+.club-role-senior { color: #79e5b1; background: rgba(75, 200, 135, 0.12); }
+@media (max-width: 600px) {
+    .club-role-badge { font-size: 0.53rem; padding: 1px 5px; margin-left: 4px; }
+}
