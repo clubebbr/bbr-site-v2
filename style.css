@@ -742,3 +742,32 @@ body {
         margin: 6px auto 0;
     }
 }
+
+/* Evita que as duas tags do CAFÉ invadam a coluna Clube no mobile.
+   A tabela continua rolável horizontalmente, mas cada célula respeita seus limites. */
+#ranking .data-table td:nth-child(2),
+#ranqueada .data-table td:nth-child(2) {
+    white-space: normal;
+}
+#ranking .data-table td:nth-child(2) .ranking-badges,
+#ranqueada .data-table td:nth-child(2) .ranking-badges {
+    box-sizing: border-box;
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+}
+@media (max-width: 600px) {
+    #ranking .data-table td:nth-child(2),
+    #ranqueada .data-table td:nth-child(2) {
+        min-width: 190px;
+        max-width: 230px;
+        overflow-wrap: anywhere;
+    }
+    #ranking .data-table td:nth-child(2) .ranking-badges,
+    #ranqueada .data-table td:nth-child(2) .ranking-badges {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 4px;
+    }
+}
