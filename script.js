@@ -140,7 +140,7 @@ async function loadDashboardData() {
             const normalizedTag = String(club.tag || '').replace('#', '').toUpperCase();
             const clubDescription = normalizedTag === '882UJP9GR'
                 ? 'Ranqueado · Lendária 1+'
-                : normalizedTag === '882GLYJ8C'
+                : normalizedTag === 'CQYU8RQP'
                     ? 'Troféus · 100 mil+'
                     : 'Clube geral · 20 mil+';
             const card = document.createElement('div');
