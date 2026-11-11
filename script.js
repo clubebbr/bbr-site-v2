@@ -39,6 +39,11 @@ function initTabs() {
         });
     });
 }
+// Fecha a lista ao clicar no fundo escuro, sem interferir no conteúdo.
+document.getElementById('club-modal')?.addEventListener('click', function (event) {
+    if (event.target === this) this.style.display = 'none';
+});
+
 async function verMembrosDoClube(tag) {
     const cleanTag = tag.replace('#', '');
     const modal = document.getElementById('club-modal');
