@@ -1,3 +1,4 @@
+import { verifyTurnstile } from './turnstile.mjs';
 import { skins } from './skins.mjs';
 // Backend preparado para Cloudflare Pages Functions. Não implantar antes da configuração.
 const START = Date.parse('2026-12-01T03:00:00Z');
@@ -12,9 +13,13 @@ export async function submit(request,env,now=Date.now()) {
   if(!request.headers.get('content-type')?.toLowerCase().includes('application/json')) return reply(415,{error:'Formato inválido.'});
   let body;try{body=await request.json()}catch{return reply(400,{error:'Dados inválidos.'})}
   if(!body || typeof body!=='object' || Array.isArray(body)) return reply(400,{error:'Dados inválidos.'});
-  const entries=Object.entries(body);
+  const { nominations, turnstileToken } = body;
+  if (!nominations || typeof nominations !== 'object' || Array.isArray(nominations)) return reply(400,{error:'Confira suas indicações.'});
+  const entries=Object.entries(nominations);
   if(!entries.length || entries.length>6 || entries.some(([category,name])=>!CATEGORIES.has(category)||typeof name!=='string'||!name.trim()||name.trim().length>100)) return reply(400,{error:'Confira suas indicações.'});
   if(entries.some(([category,name]) => skins[category] && !skins[category].includes(name.trim()))) return reply(400,{error:'Skin inválida.'});
+  if(!env.TURNSTILE_SECRET_KEY) return reply(503,{error:'Verificação de segurança indisponível.'});
+  if(!await verifyTurnstile(turnstileToken,env.TURNSTILE_SECRET_KEY,request)) return reply(403,{error:'Não foi possível verificar o acesso. Tente novamente.'});
   const id=crypto.randomUUID();
   try {
     const statements=entries.map(([category,name])=>env.AWARDS_DB.prepare('INSERT INTO awards_nominations (submission_id, category, nominee) VALUES (?, ?, ?)').bind(id,category,name.trim()));
