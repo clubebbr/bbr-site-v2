@@ -7,8 +7,8 @@ const CATEGORIES = new Set(['mitica','lendaria','mais_legal','melhor_membro','pe
 const headers = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const reply = (status,data)=>new Response(JSON.stringify(data),{status,headers});
 export function isOpen(now=Date.now()) { return now>=START && now<END; }
-export async function submit(request,env,now=Date.now()) {
-  if(!isOpen(now)) return reply(403,{error:'As indicações estão fechadas.'});
+export async function submit(request,env,now=Date.now(),testMode=false) {
+  if(!testMode && !isOpen(now)) return reply(403,{error:'As indicações estão fechadas.'});
   if(!env.AWARDS_DB) return reply(503,{error:'Formulário indisponível.'});
   if(!request.headers.get('content-type')?.toLowerCase().includes('application/json')) return reply(415,{error:'Formato inválido.'});
   let body;try{body=await request.json()}catch{return reply(400,{error:'Dados inválidos.'})}
@@ -20,10 +20,16 @@ export async function submit(request,env,now=Date.now()) {
   if(entries.some(([category,name]) => skins[category] && !skins[category].includes(name.trim()))) return reply(400,{error:'Skin inválida.'});
   if(!env.TURNSTILE_SECRET_KEY) return reply(503,{error:'Verificação de segurança indisponível.'});
   if(!await verifyTurnstile(turnstileToken,env.TURNSTILE_SECRET_KEY,request)) return reply(403,{error:'Não foi possível verificar o acesso. Tente novamente.'});
-  const id=crypto.randomUUID();
+  const id=(testMode ? 'test-' : '')+crypto.randomUUID();
   try {
     const statements=entries.map(([category,name])=>env.AWARDS_DB.prepare('INSERT INTO awards_nominations (submission_id, category, nominee) VALUES (?, ?, ?)').bind(id,category,name.trim()));
     await env.AWARDS_DB.batch(statements);
+    if(testMode) {
+      const check=await env.AWARDS_DB.prepare('SELECT COUNT(*) AS total FROM awards_nominations WHERE submission_id = ?').bind(id).first();
+      await env.AWARDS_DB.prepare('DELETE FROM awards_nominations WHERE submission_id = ?').bind(id).run();
+      if(check?.total !== entries.length) throw new Error('Teste incompleto');
+      return reply(201,{ok:true,test:true,count:check.total});
+    }
     return reply(201,{ok:true});
   } catch {return reply(503,{error:'Não foi possível salvar as indicações.'})}
 }
@@ -35,5 +41,5 @@ export async function results(request,env){
   const expected=await crypto.subtle.sign('HMAC',key,encoder.encode('Bearer '+secret));
   if(!await crypto.subtle.verify('HMAC',key,expected,encoder.encode(supplied))) return reply(401,{error:'Acesso não autorizado.'});
   if(!env.AWARDS_DB) return reply(503,{error:'Painel não configurado.'});
-  try{const data=await env.AWARDS_DB.prepare("SELECT category, nominee, COUNT(*) AS total FROM awards_nominations WHERE category != '__teste__' GROUP BY category, nominee ORDER BY category, total DESC, nominee").all();return reply(200,{results:data.results})}catch{return reply(503,{error:'Resultados indisponíveis.'})}
+  try{const data=await env.AWARDS_DB.prepare("SELECT category, nominee, COUNT(*) AS total FROM awards_nominations WHERE category != '__teste__' AND submission_id NOT LIKE 'test-%' GROUP BY category, nominee ORDER BY category, total DESC, nominee").all();return reply(200,{results:data.results})}catch{return reply(503,{error:'Resultados indisponíveis.'})}
 }
