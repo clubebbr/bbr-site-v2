@@ -679,8 +679,11 @@ body {
     white-space: nowrap;
 }
 .club-role-president { color: #ffd56e; background: rgba(255, 213, 110, 0.12); }
-.club-role-vice-president { color: #d8a2ff; background: rgba(180, 100, 255, 0.12); }
-.club-role-senior { color: #79e5b1; background: rgba(75, 200, 135, 0.12); }
+.club-role-vice-president { color: #63e6a3; background: rgba(40, 190, 110, 0.14); }
+.club-role-senior { color: #ff85ca; background: rgba(235, 65, 155, 0.14); }
+/* Títulos sazonais: disponíveis, sem jogadores atribuídos por enquanto. */
+.club-role-ranked-champion { color: #ff656d; background: rgba(235, 55, 70, 0.15); }
+.club-role-trophy-champion { color: #ffa447; background: rgba(245, 135, 35, 0.15); }
 @media (max-width: 600px) {
     .club-role-badge { font-size: 0.53rem; padding: 1px 5px; margin-left: 4px; }
 }
