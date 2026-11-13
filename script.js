@@ -532,61 +532,59 @@ let rankedMembers = [];
 
 // Ícones de cada nível (I, II e III) do CDN público do Brawlify.
 // Os IDs 58000000–58000021 cobrem Bronze I até Pro.
+// Emblemas com I, II e III do repositório Brawlify/CDN.
+// Calcula o ID usando os 22 patamares oficiais de pontuação ranqueada.
+const RANKED_TIER_STARTS = [
+    0, 250, 500, 750, 1000, 1250, 1500, 2000, 2500,
+    3000, 3500, 4000, 4500, 5000, 5500,
+    6000, 6750, 7500, 8250, 9250, 10250, 11250
+];
+
 function getRankedEmblem(player) {
-    const name = String(player.rankedRankName || '')
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .toLowerCase()
-        .trim();
+    const elo = Number(player.rankedElo);
+    let tierIndex = -1;
 
-    const divisions = [
-        { aliases: ['bronze'], base: 'bronze', first: 0, min: 0, step: 250, max: 750 },
-        { aliases: ['prata', 'silver'], base: 'silver', first: 3, min: 750, step: 250, max: 1500 },
-        { aliases: ['ouro', 'gold'], base: 'gold', first: 6, min: 1500, step: 500, max: 3000 },
-        { aliases: ['diamante', 'diamond'], base: 'diamond', first: 9, min: 3000, step: 500, max: 4500 },
-        { aliases: ['mitico', 'mitica', 'mythic'], base: 'mythic', first: 12, min: 4500, step: 500, max: 6000 },
-        { aliases: ['lendario', 'lendaria', 'legendary'], base: 'legendary', first: 15, min: 6000, step: 750, max: 8250 },
-        { aliases: ['mestres', 'mestre', 'masters', 'master'], base: 'masters', first: 18, min: 8250, step: 1000, max: 11250 },
-        { aliases: ['pro'], base: 'pro', first: 21 }
-    ];
-
-    const division = divisions.find(item =>
-        item.aliases.some(alias => name.includes(alias))
-    );
-    if (!division) return null;
-
-    const fallback = 'imagens/ranked-' + division.base + '.webp';
-    const directId = Number(player.rankedRankId ?? player.rankedTierId);
-    if (Number.isInteger(directId) && directId >= 58000000 && directId <= 58000021) {
-        return {
-            src: 'https://cdn.brawlify.com/ranked/tiered/' + directId + '.png',
-            fallback
-        };
-    }
-
-    let tier = null;
-    if (division.base === 'pro') {
-        tier = 1;
-    } else {
-        // Prioriza o nível declarado nos dados, quando disponível.
-        const explicit = name.match(/(?:^|[\s_-])(iii|ii|i|[123])$/i);
-        const levels = { i: 1, ii: 2, iii: 3 };
-        if (explicit) tier = levels[explicit[1]] || Number(explicit[1]);
-
-        // Se a API fornece só o nome da divisão, calcula o nível pelo ELO.
-        if (!tier) {
-            const elo = Number(player.rankedElo);
-            if (Number.isFinite(elo) && elo >= division.min && elo < division.max) {
-                tier = Math.min(3, Math.floor((elo - division.min) / division.step) + 1);
+    // O valor da pontuação é o que diferencia os níveis dentro da mesma divisão.
+    if (player.rankedElo !== null && player.rankedElo !== undefined &&
+        player.rankedElo !== '' && Number.isFinite(elo) && elo >= 0) {
+        for (let i = RANKED_TIER_STARTS.length - 1; i >= 0; i--) {
+            if (elo >= RANKED_TIER_STARTS[i]) {
+                tierIndex = i;
+                break;
             }
         }
     }
 
-    if (!tier) return { src: fallback, fallback };
-    const id = 58000000 + division.first + tier - 1;
+    // Caso o ELO não esteja disponível, usa o ID retornado pela API.
+    if (tierIndex < 0) {
+        const rankId = Number(player.rankedRankId ?? player.rankedTierId);
+        if (Number.isInteger(rankId) && rankId >= 58000000 && rankId <= 58000021) {
+            tierIndex = rankId - 58000000;
+        }
+    }
+
+    if (tierIndex < 0) return null;
+
+    const id = 58000000 + tierIndex;
+    const base = ['bronze', 'silver', 'gold', 'diamond', 'mythic',
+        'legendary', 'masters', 'pro'][Math.min(7, Math.floor(tierIndex / 3))];
+
     return {
-        src: 'https://cdn.brawlify.com/ranked/tiered/' + id + '.png',
-        fallback
+        // Usa o próprio repositório que contém os ícones enviados.
+        src: 'https://raw.githubusercontent.com/Brawlify/CDN/master/ranked/tiered/' + id + '.png',
+        cdn: 'https://cdn.brawlify.com/ranked/tiered/' + id + '.png',
+        fallback: 'imagens/ranked-' + base + '.webp'
+    };
+}
+
+function setRankedEmblemImage(image, emblemInfo) {
+    image.src = emblemInfo.src;
+    image.onerror = () => {
+        image.onerror = () => {
+            image.onerror = null;
+            image.src = emblemInfo.fallback;
+        };
+        image.src = emblemInfo.cdn;
     };
 }
 
@@ -699,11 +697,7 @@ function renderRankedRanking() {
 
     if (emblemInfo) {
         const emblem = document.createElement('img');
-        emblem.src = emblemInfo.src;
-        emblem.onerror = () => {
-            emblem.onerror = null;
-            emblem.src = emblemInfo.fallback;
-        };
+        setRankedEmblemImage(emblem, emblemInfo);
         emblem.alt = 'Emblema da divisão ' + player.rankedRankName;
         emblem.className = 'ranked-emblem-podium';
         points.appendChild(emblem);
@@ -797,11 +791,7 @@ const emblemInfo = getRankedEmblem(player);
 
 if (emblemInfo) {
     const emblem = document.createElement('img');
-    emblem.src = emblemInfo.src;
-        emblem.onerror = () => {
-            emblem.onerror = null;
-            emblem.src = emblemInfo.fallback;
-        };
+    setRankedEmblemImage(emblem, emblemInfo);
     emblem.alt = 'Emblema da divisão ' + player.rankedRankName;
     emblem.className = 'ranked-emblem-table';
     points.appendChild(emblem);
