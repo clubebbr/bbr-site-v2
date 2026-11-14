@@ -795,3 +795,25 @@ body {
     max-width: 100%;
     margin: 0;
 }
+
+/* Contagem regressiva da temporada ranqueada */
+.ranked-season-clock {
+    max-width: 620px;
+    margin: 18px auto 24px;
+    padding: 18px;
+    border: 1px solid rgba(199,125,255,.3);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(82,39,134,.35), rgba(23,17,42,.8));
+    text-align: center;
+}
+.ranked-season-clock-heading { font-weight: 700; margin-bottom: 14px; }
+.ranked-season-clock-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 10px; }
+.ranked-season-clock-grid > div { padding: 10px 4px; border-radius: 10px; background: rgba(15,12,27,.65); }
+.ranked-season-clock-grid strong { display: block; font-size: clamp(20px, 4vw, 32px); font-variant-numeric: tabular-nums; line-height: 1.25; }
+.ranked-season-clock-grid span { display: block; color: var(--text-sub); font-size: 12px; margin-top: 4px; }
+#ranked-clock-status { margin-top: 12px; color: var(--text-sub); font-size: 12px; }
+@media(max-width: 420px) {
+    .ranked-season-clock { padding: 12px; }
+    .ranked-season-clock-grid { gap: 5px; }
+    .ranked-season-clock-grid span { font-size: 10px; }
+}
