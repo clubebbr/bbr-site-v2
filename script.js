@@ -817,3 +817,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+// Fim da temporada em 18/11/2026, 05:00 BRT (UTC-03:00).
+const RANKED_SEASON_END = Date.parse('2026-11-18T05:00:00-03:00');
+function updateRankedSeasonClock() {
+    const clock = document.getElementById('ranked-season-clock');
+    if (!clock) return;
+    const remaining = Math.max(0, RANKED_SEASON_END - Date.now());
+    const totalSeconds = Math.floor(remaining / 1000);
+    const values = {
+        days: Math.floor(totalSeconds / 86400),
+        hours: Math.floor(totalSeconds % 86400 / 3600),
+        minutes: Math.floor(totalSeconds % 3600 / 60),
+        seconds: totalSeconds % 60
+    };
+    for (const [key, value] of Object.entries(values)) {
+        const element = document.getElementById('ranked-clock-' + key);
+        if (element) element.textContent = String(value).padStart(2, '0');
+    }
+    const status = document.getElementById('ranked-clock-status');
+    if (status && remaining === 0) status.textContent = 'Temporada encerrada';
+}
+document.addEventListener('DOMContentLoaded', () => {
+    updateRankedSeasonClock();
+    setInterval(updateRankedSeasonClock, 1000);
+});
