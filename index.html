@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clube BBR | Brawl Stars</title>
     <link rel="icon" type="image/png" href="imagens/favicon.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=ranked-clock-20261114">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -68,6 +68,17 @@
 <section id="ranqueada" class="tab-content">
     <h2>Ranking Ranqueado</h2>
     <p class="subtext">Classificação por pontos da Ranqueada — BBR | Esports</p>
+    <div class="ranked-season-clock" role="timer" aria-label="Tempo restante da temporada ranqueada">
+        <div class="ranked-season-clock-heading">⏳ Fim da temporada ranqueada</div>
+        <div class="ranked-season-clock-grid" id="ranked-season-clock">
+            <div><strong id="ranked-clock-days">--</strong><span>Dias</span></div>
+            <div><strong id="ranked-clock-hours">--</strong><span>Horas</span></div>
+            <div><strong id="ranked-clock-minutes">--</strong><span>Minutos</span></div>
+            <div><strong id="ranked-clock-seconds">--</strong><span>Segundos</span></div>
+        </div>
+        <p id="ranked-clock-status">18/11/2026 às 05h • Horário de Brasília</p>
+    </div>
+
 
     <!-- Pesquisa por nick -->
     <div class="ranking-search">
@@ -107,7 +118,7 @@
 
     </main>
 
-    <script src="script.js?v=ranked-tiered-20261113"></script>
+    <script src="script.js?v=ranked-clock-20261114"></script>
     <!-- Modal de Membros do Clube -->
 <div id="club-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
     <div style="background: #1e1e2e; padding: 24px; border-radius: 12px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; color: white; position: relative;">
