@@ -2,7 +2,7 @@ import { verifyTurnstile } from './turnstile.mjs';
 import { skins } from './skins.mjs';
 // Backend preparado para Cloudflare Pages Functions. Não implantar antes da configuração.
 const START = Date.parse('2026-12-01T03:00:00Z');
-const END = Date.parse('2026-12-08T03:00:00Z');
+const END = Date.parse('2026-12-14T03:00:00Z');
 const CATEGORIES = new Set(['mitica','lendaria','mais_legal','melhor_membro','perfil','ranqueada']);
 const headers = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const reply = (status,data)=>new Response(JSON.stringify(data),{status,headers});
