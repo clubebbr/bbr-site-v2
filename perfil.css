@@ -60,3 +60,8 @@
 
 #perfil .profile-mini small{display:flex;align-items:center;gap:6px}
 #perfil .profile-mini small .profile-icon{width:19px;height:19px;object-fit:contain;flex-shrink:0}
+
+#perfil .profile-stat-display{display:flex;align-items:center;gap:9px;margin-top:7px;min-width:0}
+#perfil .profile-stat-display strong{margin-top:0}
+#perfil .profile-stat-display .profile-stat-emblem{width:34px;height:34px;object-fit:contain;flex:none}
+@media(max-width:420px){#perfil .profile-stat-display{gap:5px}#perfil .profile-stat-display .profile-stat-emblem{width:27px;height:27px}}
