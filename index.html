@@ -6,6 +6,7 @@
     <title>Clube BBR | Brawl Stars</title>
     <link rel="icon" type="image/png" href="imagens/favicon.png">
     <link rel="stylesheet" href="style.css?v=ranked-clock-20261114">
+    <link rel="stylesheet" href="perfil.css?v=20261116">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
@@ -20,6 +21,7 @@
             <button class="tab-btn active" data-tab="ranking">Ranking de Troféus</button>
             <button class="tab-btn" data-tab="ranqueada">Ranking Ranqueado</button>
             <button class="tab-btn" data-tab="clubes">Nossos Clubes</button>
+            <button class="tab-btn" data-tab="perfil">Perfil de Jogador</button>
         </nav>
     </header>
 
@@ -116,9 +118,80 @@
     <p id="ranked-updated" class="subtext"></p>
 </section>
 
+
+<section id="perfil" class="tab-content">
+    <h2>Perfil de Jogador</h2>
+    <p class="profile-intro">Estatísticas, Ranqueada, clube e destaques do Brawl Stars em um só lugar.</p>
+    <form class="profile-search" id="profile-form">
+        <input type="search" id="profile-input" placeholder="Digite a tag do jogador (ex.: #2JU9CUC)" aria-label="Tag do jogador" autocomplete="off" required>
+        <button type="submit" id="profile-button">Pesquisar perfil</button>
+    </form>
+    <p class="profile-hint">Pesquise qualquer jogador pela tag. As informações são consultadas na API do Brawl Stars.</p>
+    <div id="profile-message" class="profile-message" role="status" hidden></div>
+    <div id="profile-result" class="profile-result" hidden>
+        <div class="profile-panel">
+            <div class="profile-identity">
+                <img id="profile-avatar" class="profile-avatar" alt="Ícone de perfil do jogador">
+                <div>
+                    <h3 id="profile-name"></h3>
+                    <div class="profile-tag" id="profile-tag"></div>
+                    <div class="profile-chips">
+                        <span class="profile-chip" id="profile-chip-bbr" hidden>Membro BBR</span>
+                        <span class="profile-chip" id="profile-chip-role"></span>
+                        <span class="profile-chip" id="profile-chip-club"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-stat"><small><img class="profile-icon" src="imagens/icon_trophy.png" alt="">Troféus atuais</small><strong id="profile-trophies"></strong></div>
+                <div class="profile-stat"><small><img class="profile-icon" src="imagens/icon_trophy.png" alt="">Recorde de troféus</small><strong id="profile-highest"></strong></div>
+                <div class="profile-stat"><small><img class="profile-icon" src="imagens/icon_members.svg" alt="">Vitórias 3×3</small><strong id="profile-3v3"></strong></div>
+                <div class="profile-stat"><small>Nível XP</small><strong id="profile-exp"></strong></div>
+            </div>
+        </div>
+        <div class="profile-panel">
+            <h3 class="profile-title">Ranqueada</h3>
+            <div class="profile-rank-grid">
+                <div class="profile-rank-card"><small>Pontos atuais</small><strong id="profile-current-elo"></strong><div class="profile-rank-label"><img id="profile-current-rank-icon" alt="Emblema atual" hidden><span id="profile-current-rank-name"></span></div></div>
+                <div class="profile-rank-card"><small>Recorde de pontos</small><strong id="profile-record-elo"></strong><div class="profile-rank-label"><img id="profile-record-rank-icon" alt="Emblema do recorde" hidden><span id="profile-record-rank-name"></span></div></div>
+                <div class="profile-rank-card"><small>Diferença para o recorde</small><strong id="profile-diff-elo"></strong><div class="profile-rank-label">Pontos para igualar a melhor marca</div></div>
+            </div>
+            <p class="profile-hint" style="margin:12px 0 0">O recorde só é exibido quando estiver disponível na API; não é estimado.</p>
+        </div>
+        <div class="profile-columns">
+            <div class="profile-panel">
+                <h3 class="profile-title"><img class="profile-icon" src="imagens/club.png" alt="">Clube atual</h3>
+                <div class="profile-club-line"><img id="profile-club-badge" src="imagens/club.png" alt="Emblema do clube"><div><strong id="profile-club"></strong><small id="profile-club-tag"></small></div></div>
+                <div class="profile-mini-grid">
+                    <div class="profile-mini"><small>Cargo</small><strong id="profile-role"></strong></div>
+                    <div class="profile-mini"><small>Membros</small><strong id="profile-club-members"></strong></div>
+                    <div class="profile-mini"><small>Troféus do clube</small><strong id="profile-club-trophies"></strong></div>
+                </div>
+            </div>
+            <div class="profile-panel">
+                <h3 class="profile-title">Estatísticas gerais</h3>
+                <div class="profile-mini-grid">
+                    <div class="profile-mini"><small>Vitórias solo</small><strong id="profile-solo"></strong></div>
+                    <div class="profile-mini"><small>Vitórias em dupla</small><strong id="profile-duo"></strong></div>
+                    <div class="profile-mini"><small>Brawlers</small><strong id="profile-brawlers-count"></strong></div>
+                    <div class="profile-mini"><small>Classificado para o Mundial</small><strong id="profile-champ"></strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-panel">
+            <h3 class="profile-title">Destaques dos Brawlers</h3>
+            <div class="profile-brawlers">
+                <div class="profile-brawler"><img id="profile-best-icon" alt="Melhor Brawler" hidden><div><small>Mais troféus</small><strong id="profile-best-name"></strong><div class="profile-brawler-trophies"><img src="imagens/icon_trophy.png" alt=""><span id="profile-best-trophies"></span></div></div></div>
+                <div class="profile-brawler"><img id="profile-lowest-icon" alt="Brawler com menos troféus" hidden><div><small>Menos troféus</small><strong id="profile-lowest-name"></strong><div class="profile-brawler-trophies"><img src="imagens/icon_trophy.png" alt=""><span id="profile-lowest-trophies"></span></div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
     </main>
 
     <script src="script.js?v=ranked-clock-20261114"></script>
+    <script src="perfil.js?v=20261116"></script>
     <!-- Modal de Membros do Clube -->
 <div id="club-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
     <div style="background: #1e1e2e; padding: 24px; border-radius: 12px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; color: white; position: relative;">
