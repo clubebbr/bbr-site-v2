@@ -46,3 +46,7 @@
 #perfil .profile-brawler .profile-brawler-trophies img{width:16px;height:16px}
 @media(max-width:780px){#perfil .profile-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#perfil .profile-rank-grid{grid-template-columns:1fr}#perfil .profile-columns{grid-template-columns:1fr}#perfil .profile-brawlers{grid-template-columns:1fr}}
 @media(max-width:420px){#perfil .profile-panel{padding:14px}#perfil .profile-search button{padding:11px;font-size:.78rem}#perfil .profile-avatar{width:65px;height:65px}#perfil .profile-identity h3{font-size:1.15rem}#perfil .profile-grid{gap:8px}#perfil .profile-stat{padding:10px}#perfil .profile-stat small{font-size:.68rem}}
+
+#perfil .profile-club-role{margin-top:12px;border-top:1px solid var(--border-color);padding-top:12px}
+#perfil .profile-club-role small{display:block;color:var(--text-sub);font-size:.75rem}
+#perfil .profile-club-role strong{display:block;margin-top:4px;color:#d7a2ff;font-size:1.05rem}
