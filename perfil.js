@@ -62,15 +62,6 @@
       setText('profile-highest', fmt(player.highestTrophies));
       setText('profile-3v3', fmt(player['3vs3Victories']));
       setText('profile-prestige', fmt(player.totalPrestigeLevel));
-      const prestige = Number(player.totalPrestigeLevel);
-      const prestigeTier = prestige >= 200 ? 5 : prestige >= 100 ? 4 : prestige >= 50 ? 3 : prestige >= 25 ? 2 : prestige >= 1 ? 1 : 0;
-      const prestigeBadge = byId('profile-prestige-icon');
-      const prestigeOverlay = byId('profile-prestige-overlay');
-      if (prestigeBadge) {
-        prestigeBadge.src = CDN + '/prestiges/regular/' + prestigeTier + '.png';
-        prestigeBadge.hidden = !Number.isFinite(prestige);
-      }
-      if (prestigeOverlay) prestigeOverlay.textContent = Number.isFinite(prestige) ? String(prestige) : '';
 
       setText('profile-exp', fmt(player.expLevel));
       setText('profile-solo', fmt(player.soloVictories));
