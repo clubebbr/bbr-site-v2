@@ -76,7 +76,7 @@
       setText('profile-club-trophies', 'Não disponível');
       setText('profile-chip-club', club?.name || 'Sem clube');
       setText('profile-chip-role', club ? 'Membro' : 'Sem clube');
-      byId('profile-chip-bbr').hidden = !club || !['#882UJP9GR','#CQYU8RQP','#882GLYJ8C','#2GLJJJQU9','#2GP2RLLVL','#2UCVYQGGP','#2GLJJVJ9V'].includes(String(club.tag || '').toUpperCase());
+      const isBbrClub = !!club && ['#882UJP9GR','#CQYU8RQP','#882GLYJ8C','#2GLJJJQU9','#2GP2RLLVL','#2UCVYQGGP','#2GLJJVJ9V'].includes(String(club.tag || '').toUpperCase());
       setImage('profile-club-badge', clubIcon);
       const brawlers = Array.isArray(player.brawlers) ? [...player.brawlers].sort((a,b) => Number(b.trophies || 0) - Number(a.trophies || 0)) : [];
       for (const [prefix, b] of [['profile-best', brawlers[0]],['profile-lowest', brawlers[brawlers.length - 1]]]) {
@@ -115,7 +115,7 @@
       let record = player.highestAllTimeRankedElo ?? (peakCandidates.length ? Math.max(...peakCandidates) : null);
       const seasonRecord = player.highestSeasonRankedElo ?? null;
       // O ranking já existente pode complementar os dados atuais de membros BBR.
-      if (current == null && !byId('profile-chip-bbr').hidden) {
+      if (current == null && isBbrClub) {
         try {
           const data = await getJson(API + '/ranked');
           const found = (data.ranking || []).find(x => cleanTag(x.tag) === tag);
