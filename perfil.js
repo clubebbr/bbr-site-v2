@@ -85,7 +85,30 @@
       // A API de jogador pode não disponibilizar o recorde histórico ranqueado.
       // Nunca usar o ELO atual como se fosse o recorde.
       let current = player.rankedElo ?? null;
-      let record = player.highestRankedElo ?? player.bestRankedElo ?? player.rankedBestElo ?? null;
+      // Nomes de campo variam entre versões e provedores. Não confundir o ELO atual com o pico.
+      // Priorizar somente campos que indiquem explicitamente um recorde/pico ranqueado.
+      const peakFields = [
+        'highestRankedElo', 'rankedHighestElo', 'bestRankedElo', 'rankedBestElo',
+        'rankedPeakElo', 'peakRankedElo', 'rankedEloPeak', 'maxRankedElo',
+        'highestRankedPoints', 'rankedHighestPoints', 'bestRankedPoints',
+        'rankedAllTimeBestElo', 'allTimeHighestRankedElo', 'highestRankedScore',
+        'rankedBestScore', 'bestRankedScore'
+      ];
+      const peakContainers = [
+        player, player.ranked, player.rankedStats, player.rankedStatistics,
+        player.rankedRecord, player.rankedBest, player.rankedPeak,
+        player.allTimeStats
+      ].filter(x => x && typeof x === 'object');
+      const peakCandidates = [];
+      for (const obj of peakContainers) {
+        for (const key of peakFields) {
+          const value = obj[key];
+          if (value !== null && value !== undefined && value !== '' && Number.isFinite(Number(value)) && Number(value) >= 0) {
+            peakCandidates.push(Number(value));
+          }
+        }
+      }
+      let record = peakCandidates.length ? Math.max(...peakCandidates) : null;
       // O ranking já existente pode complementar os dados atuais de membros BBR.
       if (current == null && !byId('profile-chip-bbr').hidden) {
         try {
