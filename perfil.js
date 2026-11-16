@@ -108,7 +108,8 @@
           }
         }
       }
-      let record = peakCandidates.length ? Math.max(...peakCandidates) : null;
+      let record = player.highestAllTimeRankedElo ?? (peakCandidates.length ? Math.max(...peakCandidates) : null);
+      const seasonRecord = player.highestSeasonRankedElo ?? null;
       // O ranking já existente pode complementar os dados atuais de membros BBR.
       if (current == null && !byId('profile-chip-bbr').hidden) {
         try {
@@ -122,8 +123,9 @@
       }
       setText('profile-current-elo', fmt(current));
       setText('profile-record-elo', fmt(record));
+      setText('profile-season-elo', fmt(seasonRecord));
       setText('profile-diff-elo', current != null && record != null ? fmt(Math.max(0, Number(record) - Number(current))) : 'Não disponível');
-      for (const [prefix, elo] of [['profile-current',current],['profile-record',record]]) {
+      for (const [prefix, elo] of [['profile-current',current],['profile-record',record],['profile-season',seasonRecord]]) {
         const info = rankInfo(elo);
         setText(prefix + '-rank-name', info?.name || 'Divisão não disponível');
         const img = byId(prefix + '-rank-icon');
