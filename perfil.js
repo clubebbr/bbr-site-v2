@@ -27,7 +27,9 @@
     for (let i = 0; i < starts.length; i++) if (v >= starts[i]) index = i;
     const name = names[Math.min(names.length - 1, Math.floor(index / 3))];
     const roman = ['I','II','III'][index % 3];
-    return { name: name + (index < 18 ? ' ' + roman : ''), src: CDN + '/ranked/tiered/' + (58000000 + index) + '.png' };
+    const bases = ['bronze','silver','gold','diamond','mythic','legendary','masters','pro'];
+    const base = bases[Math.min(bases.length - 1, Math.floor(index / 3))];
+    return { name: name + (index < 18 ? ' ' + roman : ''), src: 'imagens/ranked-' + base + '.webp' };
   }
   const roleName = role => ({president:'Presidente',vicepresident:'Vice-presidente',senior:'Perito',member:'Membro'})[String(role || '').toLowerCase().replace(/[^a-z]/g,'')] || 'Membro';
   async function getJson(url) {
