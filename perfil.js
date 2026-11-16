@@ -61,6 +61,7 @@
       setText('profile-trophies', fmt(player.trophies));
       setText('profile-highest', fmt(player.highestTrophies));
       setText('profile-3v3', fmt(player['3vs3Victories']));
+      setText('profile-prestige', fmt(player.totalPrestigeLevel));
       setText('profile-exp', fmt(player.expLevel));
       setText('profile-solo', fmt(player.soloVictories));
       setText('profile-duo', fmt(player.duoVictories));
