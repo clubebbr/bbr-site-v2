@@ -67,6 +67,16 @@
       setText('profile-solo', fmt(player.soloVictories));
       setText('profile-duo', fmt(player.duoVictories));
       setText('profile-brawlers-count', Array.isArray(player.brawlers) ? fmt(player.brawlers.length) : 'Não disponível');
+      setText('profile-skins-count', 'Consultando...');
+      // Consulta independente: falhas do provedor de skins nao afetam o perfil.
+      getJson('/api/skins?tag=' + encodeURIComponent(tag))
+        .then(data => {
+          if (cleanTag(byId('profile-tag')?.textContent) !== tag) return;
+          setText('profile-skins-count', data.ok && Number.isInteger(data.total) ? fmt(data.total) : 'Não disponível');
+        })
+        .catch(() => {
+          if (cleanTag(byId('profile-tag')?.textContent) === tag) setText('profile-skins-count', 'Não disponível');
+        });
       setText('profile-champ', player.isQualifiedFromChampionshipChallenge === undefined ? 'Não disponível' : player.isQualifiedFromChampionshipChallenge ? 'Sim' : 'Não');
       const club = player.club || null;
       setText('profile-club', club?.name || 'Sem clube');
