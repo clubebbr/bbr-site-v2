@@ -48,7 +48,18 @@
   async function load() {
     if(started) return;
     started=true;
-    status('Buscando os membros dos sete clubes...');
+    status('Carregando último ranking salvo...');
+    try {
+      const snapshot = await fetchJson('/ranking-skins-data.json');
+      if (snapshot && Array.isArray(snapshot.players) && snapshot.players.length > 0) {
+        results = snapshot.players.filter(p => Number.isInteger(p.total));
+        render();
+        const when = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }) : 'desconhecida';
+        status('TOP 50 salvo • atualizado em ' + when + ' (horário de Brasília) • ' + snapshot.consulted + ' jogadores consultados.');
+        return;
+      }
+    } catch (_) { /* Sem snapshot: permite teste manual na prévia. */ }
+    status('Primeira consulta: buscando membros dos sete clubes...');
     const clubResults=await Promise.allSettled(clubs.map(tag=>fetchJson(api+tag)));
     const okClubs=clubResults.filter(r=>r.status==='fulfilled' && Array.isArray(r.value.members));
     if(okClubs.length!==clubs.length) {
