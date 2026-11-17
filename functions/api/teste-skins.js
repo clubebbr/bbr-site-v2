@@ -13,15 +13,15 @@ export async function onRequestGet({ request }) {
       signal: AbortSignal.timeout(10000)
     });
     const html = await response.text();
-    if (!response.ok || !/<table\\b[^>]*\\bid=["']skinsTable["']/i.test(html)) {
+    if (!response.ok || !/<table\b[^>]*\bid=["']skinsTable["']/i.test(html)) {
       return Response.json({
         ok: false, upstreamStatus: response.status,
         error: "Tabela de skins indisponivel (bloqueio, mudanca de formato ou erro)"
       }, { status: 502, headers: { "Cache-Control": "no-store" } });
     }
-    const tbody = html.match(/<tbody\\b[^>]*>([\\s\\S]*?)<\\/tbody>/i);
+    const tbody = html.match(/<tbody\b[^>]*>([\s\S]*?)<\/tbody>/i);
     if (!tbody) return Response.json({ ok: false, error: "tbody nao encontrado" }, { status: 502 });
-    const total = (tbody[1].match(/<tr\\b/gi) || []).length;
+    const total = (tbody[1].match(/<tr\b/gi) || []).length;
     return Response.json({ ok: true, tag: "#" + tag, total, upstreamStatus: response.status }, {
       headers: { "Cache-Control": "no-store" }
     });
