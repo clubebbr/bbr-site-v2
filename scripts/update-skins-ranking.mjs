@@ -34,10 +34,10 @@ async function worker() {
     const m=members[cursor++];
     try {
       const html=await get('https://brawlace.com/players/%23'+encodeURIComponent(m.tag)+'/skins','text/html');
-      if(!/<table\\b[^>]*\\bid=["']skinsTable["']/i.test(html)) throw Error('Tabela ausente');
-      const tbody=html.match(/<tbody\\b[^>]*>([\\s\\S]*?)<\\/tbody>/i);
+      if(!/<table\b[^>]*\bid=["']skinsTable["']/i.test(html)) throw Error('Tabela ausente');
+      const tbody=html.match(/<tbody\b[^>]*>([\s\S]*?)<\/tbody>/i);
       if(!tbody) throw Error('Corpo da tabela ausente');
-      const total=(tbody[1].match(/<tr\\b/gi)||[]).length;
+      const total=(tbody[1].match(/<tr\b/gi)||[]).length;
       if(total<1||total>5000) throw Error('Total fora do intervalo');
       results.push({...m,total});
     } catch(e) {failures.push({tag:m.tag,error:String(e.message||e)});}
