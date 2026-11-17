@@ -817,3 +817,10 @@ body {
     .ranked-season-clock-grid { gap: 5px; }
     .ranked-season-clock-grid span { font-size: 10px; }
 }
+
+/* TOP 50 de skins: cartões compactos e responsivos */
+.skins-ranking-podium { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:16px 0 22px; }
+.skins-leader { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; min-width:0; padding:16px 10px; border-radius:14px; background:rgba(150,120,220,.12); border:1px solid rgba(180,160,240,.24); }
+.skins-leader span { overflow-wrap:anywhere; font-weight:600; }
+.skins-leader strong:last-child { color:#d7c4ff; }
+@media(max-width:600px) { .skins-ranking-podium { gap:6px; } .skins-leader { padding:12px 5px; font-size:12px; } }
