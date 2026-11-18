@@ -25,7 +25,7 @@ const seen=new Set(),members=[];
 for(const r of clubResults) for(const m of r.value.members) {
   const tag=String(m.tag||'').replace(/^#/,'').toUpperCase();
   if(!/^[0289PYLQGRJCUV]{3,15}$/.test(tag)||seen.has(tag)) continue;
-  seen.add(tag);members.push({tag,name:m.name||'#'+tag,club:r.value.name||'BBR'});
+  seen.add(tag);members.push({tag,name:m.name||'#'+tag,club:r.value.name||'BBR',iconId:m.icon?.id||m.iconId||null});
 }
 if(members.length<30) throw Error('Quantidade inesperada de membros: '+members.length);
 const results=[],failures=[];let cursor=0;
