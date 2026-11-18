@@ -847,3 +847,5 @@ body {
     background: #43e783;
     transform: translateY(-1px);
 }
+
+.club-whatsapp-icon { width: 19px; height: 19px; flex: 0 0 19px; margin-right: 8px; }
