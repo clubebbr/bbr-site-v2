@@ -742,10 +742,11 @@ function renderRankedRanking() {
 
             if (isRankedSponsor(player)) card.classList.add('ranked-sponsor-podium');
 
-            const clubLine = card.querySelector('.podium-club');
-            if (clubLine) {
-                clubLine.classList.add('podium-club-with-badges');
-                appendPlayerBadges(clubLine, player);
+            // O pódio ranqueado não exibe mais a linha do clube.
+            // Anexa as tags ao nome para manter Campeão, Patrocinador e cargos.
+            const nameLine = card.querySelector('.podium-name');
+            if (nameLine) {
+                appendPlayerBadges(nameLine, player);
             }
             podium.appendChild(card);
         });
