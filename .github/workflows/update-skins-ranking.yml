@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - preview-ranking-skins-top50
+      - main
     paths:
       - 'scripts/update-skins-ranking.mjs'
       - '.github/workflows/update-skins-ranking.yml'
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Consultar clubes e gerar TOP 50
+      - name: Consultar clubes e gerar ranking completo
         run: node scripts/update-skins-ranking.mjs
       - name: Salvar snapshot no repositorio
         run: |
@@ -36,5 +36,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ranking-skins-data.json
-          git commit -m "data: atualizar TOP 50 de skins"
+          git commit -m "data: atualizar ranking de skins"
           git push
