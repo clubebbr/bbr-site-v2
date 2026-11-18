@@ -57,6 +57,8 @@
       const player = await getJson(API + '/players/' + encodeURIComponent(tag));
       setText('profile-name', player.name || 'Jogador');
       setText('profile-tag', player.tag || '#' + tag);
+      const championBadge = byId('profile-ranked-champion');
+      if (championBadge) championBadge.hidden = cleanTag(player.tag || tag) !== 'RC0R9LG8';
       setImage('profile-avatar', CDN + '/profile-icons/regular/' + (player.icon?.id || 28000000) + '.png', CDN + '/profile-icons/regular/28000000.png');
       setText('profile-trophies', fmt(player.trophies));
       setText('profile-highest', fmt(player.highestTrophies));
