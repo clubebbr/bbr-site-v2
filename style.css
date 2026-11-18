@@ -824,3 +824,26 @@ body {
 .skins-leader span { overflow-wrap:anywhere; font-weight:600; }
 .skins-leader strong:last-child { color:#d7c4ff; }
 @media(max-width:600px) { .skins-ranking-podium { gap:6px; } .skins-leader { padding:12px 5px; font-size:12px; } }
+
+/* Atalho de recrutamento apenas para clubes com vagas */
+.club-recruitment-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #25d366;
+    color: #10291a;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.club-recruitment-link:hover, .club-recruitment-link:focus-visible {
+    background: #43e783;
+    transform: translateY(-1px);
+}
