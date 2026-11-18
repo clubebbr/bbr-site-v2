@@ -84,7 +84,23 @@
         results = snapshot.players.filter(p => Number.isInteger(p.total));
         render();
         const when = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : 'desconhecida';
-        status('Atualizado em ' + when + (results.length < snapshot.consulted ? ' • Lista parcial até a próxima atualização.' : ''));
+        status('Atualizado em ' + when + (snapshot.staleCount ? ' • ' + snapshot.staleCount + ' consulta(s) de skins com valores anteriores.' : '') + (results.length < snapshot.consulted ? ' • Lista parcial até a próxima atualização.' : ''));
+        // Os dados antigos não tinham iconId; buscar ícones atuais dos clubes sem recalcular skins.
+        if (results.some(p => !p.iconId)) {
+          Promise.allSettled(clubs.map(tag => fetchJson(api + tag))).then(clubData => {
+            const icons = new Map();
+            for (const entry of clubData) if (entry.status === 'fulfilled') {
+              for (const m of entry.value.members || []) {
+                const id = m.icon?.id || m.iconId;
+                if (id) icons.set(String(m.tag || '').replace(/^#/, '').toUpperCase(), id);
+              }
+            }
+            if (icons.size) {
+              for (const p of results) p.iconId ||= icons.get(String(p.tag || '').replace(/^#/, '').toUpperCase()) || null;
+              render();
+            }
+          }).catch(() => {});
+        }
         return;
       }
     } catch (_) { /* Sem snapshot: permite teste manual na prévia. */ }
