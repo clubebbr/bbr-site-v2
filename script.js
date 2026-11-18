@@ -331,11 +331,10 @@ Object.assign(document.createElement('img'), {
 
             );
 
-            const clubLine = card.querySelector('.podium-club');
-            if (clubLine) {
-                clubLine.classList.add('podium-club-with-badges');
-                appendPlayerBadges(clubLine, player);
-            }
+            const badges = document.createElement('div');
+            badges.className = 'ranked-podium-badges';
+            appendPlayerBadges(badges, player);
+            card.appendChild(badges);
             podium.appendChild(card);
         });
     }
@@ -594,6 +593,36 @@ function setRankedEmblemImage(image, emblemInfo) {
     };
 }
 
+
+function rankedSeasonPeak(player) {
+    // Somente o maior valor da temporada atual; nunca usar recordes históricos.
+    const value = player.highestSeasonRankedElo ?? player.rankedSeasonHighestElo ??
+        player.seasonHighestRankedElo ?? player.highestRankedEloThisSeason;
+    return value !== null && value !== undefined && value !== '' &&
+        Number.isFinite(Number(value)) && Number(value) >= 0 ? Number(value) : null;
+}
+
+function createRankedPoints(player, value, extraClass, label) {
+    const element = document.createElement('div');
+    element.className = 'ranked-score ' + extraClass;
+    element.setAttribute('aria-label', label);
+    if (value === null) {
+        element.textContent = '—';
+        element.title = 'Pontuação máxima da temporada indisponível na API';
+        return element;
+    }
+    const emblemInfo = getRankedEmblem({rankedElo:value});
+    if (emblemInfo) {
+        const emblem = document.createElement('img');
+        setRankedEmblemImage(emblem, emblemInfo);
+        emblem.alt = '';
+        emblem.className = extraClass.includes('podium') ? 'ranked-emblem-podium' : 'ranked-emblem-table';
+        element.appendChild(emblem);
+    }
+    element.appendChild(document.createTextNode(value.toLocaleString('pt-BR')));
+    return element;
+}
+
 async function loadRankedRanking() {
     const tbody = document.getElementById('ranked-tbody');
     const updated = document.getElementById('ranked-updated');
@@ -693,31 +722,22 @@ function renderRankedRanking() {
                 ][index]),
                 avatar,
                 rankingText('div', 'podium-name', player.name),
-                rankingText('div', 'podium-club', player.clubName),
-               
-(() => {
-    const points = document.createElement('div');
-    points.className = 'podium-trophies';
-
-    const emblemInfo = getRankedEmblem(player);
-
-    if (emblemInfo) {
-        const emblem = document.createElement('img');
-        setRankedEmblemImage(emblem, emblemInfo);
-        emblem.alt = 'Emblema da divisão ' + player.rankedRankName;
-        emblem.className = 'ranked-emblem-podium';
-        points.appendChild(emblem);
-    }
-
-    points.appendChild(
-        document.createTextNode(
-            Number(player.rankedElo).toLocaleString('pt-BR')
-        )
-    );
-
-    return points;
-})()
-
+                (() => {
+                    const details = document.createElement('div');
+                    details.className = 'ranked-podium-scores';
+                    const current = document.createElement('div');
+                    current.append(
+                        rankingText('small', '', 'ATUAL'),
+                        createRankedPoints(player, Number(player.rankedElo), 'ranked-score-podium', 'Pontos atuais')
+                    );
+                    const peak = document.createElement('div');
+                    peak.append(
+                        rankingText('small', '', 'MAIS ALTO'),
+                        createRankedPoints(player, rankedSeasonPeak(player), 'ranked-score-podium', 'Maior pontuação da temporada atual')
+                    );
+                    details.append(current, peak);
+                    return details;
+                })()
             );
 
             if (isRankedSponsor(player)) card.classList.add('ranked-sponsor-podium');
@@ -776,40 +796,11 @@ function renderRankedRanking() {
         appendPlayerBadges(name, player);
 
 
-const club = document.createElement('td');
-
-const clubIcon = document.createElement('img');
-clubIcon.src = 'imagens/club.png';
-clubIcon.alt = '';
-clubIcon.style.cssText =
-    'width:20px;height:20px;vertical-align:middle;margin-right:6px;';
-
-club.append(
-    clubIcon,
-    document.createTextNode(player.clubName || '')
-);
-
-
-       
-const points = document.createElement('td');
-
-const emblemInfo = getRankedEmblem(player);
-
-if (emblemInfo) {
-    const emblem = document.createElement('img');
-    setRankedEmblemImage(emblem, emblemInfo);
-    emblem.alt = 'Emblema da divisão ' + player.rankedRankName;
-    emblem.className = 'ranked-emblem-table';
-    points.appendChild(emblem);
-}
-
-points.appendChild(
-    document.createTextNode(
-        Number(player.rankedElo).toLocaleString('pt-BR')
-    )
-);
-
-        tr.append(position, name, club, points);
+const currentCell = document.createElement('td');
+currentCell.appendChild(createRankedPoints(player, Number(player.rankedElo), 'ranked-score-table', 'Pontos atuais'));
+const peakCell = document.createElement('td');
+peakCell.appendChild(createRankedPoints(player, rankedSeasonPeak(player), 'ranked-score-table', 'Maior pontuação da temporada atual'));
+tr.append(position, name, currentCell, peakCell);
         tbody.appendChild(tr);
     });
 }
