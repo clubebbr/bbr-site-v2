@@ -17,20 +17,49 @@
     const rows = top.map((p,i) => ({...p, position:i+1})).filter(p => norm(p.name).includes(term));
     podium.replaceChildren();
     podium.hidden = Boolean(term);
+    const avatarFor = (p, className) => {
+      if (!p.iconId) return null;
+      const img = document.createElement('img');
+      img.className = className;
+      img.src = 'https://cdn.brawlify.com/profile-icons/regular/' + encodeURIComponent(p.iconId) + '.png';
+      img.alt = 'Ícone de perfil de ' + p.name;
+      img.loading = 'lazy';
+      return img;
+    };
     if (!term) top.slice(0,3).forEach((p,i) => {
       const card = document.createElement('div');
-      card.className = 'skins-leader';
-      const rank = document.createElement('strong'); rank.textContent = ['🥇','🥈','🥉'][i];
-      const name = document.createElement('span'); name.textContent = p.name;
-      const count = document.createElement('strong'); count.textContent = fmt(p.total) + ' skins';
-      card.append(rank,name,count); podium.append(card);
+      card.className = 'podium-card ' + ['podium-gold','podium-silver','podium-bronze'][i];
+      const rank = document.createElement('div');
+      rank.className = 'podium-place';
+      rank.textContent = ['🥇 1º LUGAR','🥈 2º LUGAR','🥉 3º LUGAR'][i];
+      const name = document.createElement('div');
+      name.className = 'podium-name'; name.textContent = p.name;
+      const club = document.createElement('div');
+      club.className = 'podium-club'; club.textContent = p.club;
+      const count = document.createElement('div');
+      count.className = 'podium-trophies'; count.textContent = fmt(p.total) + ' skins';
+      const avatar = avatarFor(p,'podium-avatar');
+      card.append(rank);
+      if (avatar) card.append(avatar);
+      card.append(name,club,count);
+      podium.append(card);
     });
     body.replaceChildren();
     for (const p of rows.filter(p => term || p.position>3)) {
       const tr = document.createElement('tr');
-      for (const value of [String(p.position),p.name,p.club,fmt(p.total)]) {
-        const td = document.createElement('td'); td.textContent = value; tr.append(td);
-      }
+      const position = document.createElement('td');
+      position.textContent = '#' + p.position;
+      const name = document.createElement('td');
+      const avatar = avatarFor(p,'ranking-avatar');
+      if (avatar) name.append(avatar);
+      const nameText = document.createElement('strong');
+      nameText.textContent = p.name;
+      name.append(nameText);
+      const club = document.createElement('td');
+      club.textContent = p.club;
+      const total = document.createElement('td');
+      total.textContent = fmt(p.total);
+      tr.append(position,name,club,total);
       body.append(tr);
     }
     if (!rows.length) {
@@ -70,7 +99,7 @@
     for(const entry of okClubs) for(const m of entry.value.members) {
       const tag=String(m.tag||'').replace(/^#/,'').toUpperCase();
       if(!tag || seen.has(tag)) continue;
-      seen.add(tag); members.push({tag,name:m.name||'#'+tag,club:entry.value.name||'Clube BBR'});
+      seen.add(tag); members.push({tag,name:m.name||'#'+tag,club:entry.value.name||'Clube BBR',iconId:m.icon?.id||m.iconId||null});
     }
     if(!members.length) {status('Nenhum membro encontrado.');started=false;return;}
     status('Consultando skins: 0 de '+members.length+' jogadores...');
