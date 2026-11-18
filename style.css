@@ -1,11 +1,11 @@
 :root {
-    --bg-main: #0f0c1b;
-    --card-bg: rgba(36, 26, 61, 0.7);
-    --accent-purple: #9d4edd;
-    --accent-light: #c77dff;
+    --bg-main: #190033;
+    --card-bg: rgba(43, 5, 83, 0.88);
+    --accent-purple: #7500d6;
+    --accent-light: #d59aff;
     --text-main: #ffffff;
-    --text-sub: #b8b8d1;
-    --border-color: rgba(199, 125, 255, 0.2);
+    --text-sub: #d4c0e9;
+    --border-color: rgba(174, 99, 255, 0.35);
 }
 
 * {
@@ -853,3 +853,55 @@ body {
 #profile-ranked-champion[hidden] { display: none; }
 #profile-ranked-champion { margin-left: 0; }
 
+
+/* BBR — identidade roxa inspirada na arte do Ranking Ranqueado.
+   Mantém as cores semânticas dos pódios, cargos e botão WhatsApp. */
+body {
+    background-color: var(--bg-main);
+    background-image:
+        radial-gradient(ellipse at 12% 5%, rgba(89,0,184,.38), transparent 45%),
+        radial-gradient(ellipse at 92% 35%, rgba(117,0,214,.20), transparent 55%),
+        linear-gradient(155deg, #190033, #260052 70%, #190033);
+    background-attachment: fixed;
+}
+.header {
+    background: rgba(30, 0, 61, .95);
+    border-bottom-color: rgba(159, 65, 255, .4);
+}
+.tab-btn:hover { background: rgba(117, 0, 214, .32); }
+.tab-btn.active {
+    background: linear-gradient(135deg, #7500d6, #5900b8);
+    box-shadow: 0 4px 16px rgba(117,0,214,.30);
+}
+.table-card, .chart-card, .player-header-card, .club-card {
+    background: rgba(43, 5, 83, .88);
+    border-color: rgba(174,99,255,.35);
+}
+.ranking-search input, .search-box input {
+    background: rgba(34, 3, 67, .94);
+    border-color: rgba(174,99,255,.42);
+}
+.ranking-search input:focus, .search-box input:focus {
+    border-color: #ae63ff;
+    box-shadow: 0 0 0 3px rgba(117,0,214,.22);
+}
+.search-box button, .trophy-badge {
+    background: linear-gradient(135deg, #7500d6, #5900b8);
+}
+.data-table th { color: #dfb3ff; }
+.data-table th, .data-table td { border-bottom-color: rgba(174,99,255,.23); }
+.stat-box, .brawler-card {
+    background: rgba(34,3,67,.76);
+    border-color: rgba(174,99,255,.28);
+}
+.stat-box .val { color: #dfb3ff; }
+.social-btn { background: #300762; border-color: rgba(174,99,255,.32); }
+.social-btn:hover { background: #5900b8; border-color: #ae63ff; }
+.podium-card {
+    background: linear-gradient(160deg, var(--podium-bg), rgba(38,0,82,.92));
+}
+/* Cor institucional apenas para elementos neutros, sem sobrescrever
+   etiquetas de cargo, medalhas ou o botão oficial de recrutamento. */
+@media (max-width: 768px) {
+    body { background-attachment: scroll; }
+}
