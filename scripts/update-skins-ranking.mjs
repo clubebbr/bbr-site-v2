@@ -1,6 +1,6 @@
 // Gera um snapshot estatico do ranking de skins para Cloudflare Pages.
 // Executado por GitHub Actions a cada 6 horas; sem dependencias externas.
-import { writeFile } from 'node:fs/promises';
+import { writeFile, readFile } from 'node:fs/promises';
 const clubs=['882UJP9GR','CQYU8RQP','882GLYJ8C','2GLJJJQU9','2GP2RLLVL','2UCVYQGGP','2GLJJVJ9V'];
 const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function get(url,accept='application/json') {
@@ -28,6 +28,8 @@ for(const r of clubResults) for(const m of r.value.members) {
   seen.add(tag);members.push({tag,name:m.name||'#'+tag,club:r.value.name||'BBR',iconId:m.icon?.id||m.iconId||null});
 }
 if(members.length<30) throw Error('Quantidade inesperada de membros: '+members.length);
+const previous=JSON.parse(await readFile('ranking-skins-data.json','utf8').catch(()=>'{}'));
+const previousByTag=new Map((previous.players||[]).map(p=>[p.tag,p]));
 const results=[],failures=[];let cursor=0;
 async function worker() {
   while(cursor<members.length) {
@@ -40,17 +42,19 @@ async function worker() {
       const total=(tbody[1].match(/<tr\b/gi)||[]).length;
       if(total<1||total>5000) throw Error('Total fora do intervalo');
       results.push({...m,total});
-    } catch(e) {failures.push({tag:m.tag,error:String(e.message||e)});}
+    } catch(e) {
+      const old=previousByTag.get(m.tag);
+      if(old && Number.isInteger(old.total)) results.push({...m,total:old.total,stale:true});
+      failures.push({tag:m.tag,error:String(e.message||e),reused:!!old});
+    }
     await wait(400);
   }
 }
 await Promise.all([worker(),worker(),worker()]);
 console.log('Membros:',members.length,'consultados:',results.length,'falhas:',failures.length);
-if(failures.length) {
-  console.error('Falhas:',JSON.stringify(failures));
-  throw Error('Snapshot nao atualizado: '+failures.length+' consulta(s) falharam');
-}
+if(failures.length) console.warn('Consultas com falha (valores anteriores preservados):',JSON.stringify(failures));
+if(results.length!==members.length) throw Error('Dados incompletos sem valores anteriores: snapshot preservado');
 results.sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,'pt-BR'));
-const snapshot={updatedAt:new Date().toISOString(),consulted:members.length,clubs:clubs.length,players:results};
+const snapshot={updatedAt:new Date().toISOString(),consulted:members.length,clubs:clubs.length,staleCount:failures.length,players:results};
 await writeFile('ranking-skins-data.json',JSON.stringify(snapshot,null,2)+'\n');
 console.log('Ranking completo salvo:',results.length,'jogadores verificados');
