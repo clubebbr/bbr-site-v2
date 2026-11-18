@@ -226,6 +226,9 @@ function appendPlayerBadges(container, player) {
     if (isRankedSponsor(player)) {
         badges.appendChild(rankingText('span', 'ranked-sponsor-badge', '★ PATROCINADOR'));
     }
+    if (normalizePlayerTag(player.tag) === 'RC0R9LG8') {
+        badges.appendChild(rankingText('span', 'club-role-badge club-role-ranked-champion', '★ CAMPEÃO RANQUEADO'));
+    }
     if (badges.childElementCount) container.appendChild(badges);
 }
 
