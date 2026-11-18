@@ -13,7 +13,7 @@
     const podium = $('skins-ranking-podium');
     if (!body || !podium) return;
     const term = norm($('skins-ranking-search')?.value.trim());
-    const top = [...results].sort((a,b) => b.total-a.total || a.name.localeCompare(b.name,'pt-BR')).slice(0,50);
+    const top = [...results].sort((a,b) => b.total-a.total || a.name.localeCompare(b.name,'pt-BR'));
     const rows = top.map((p,i) => ({...p, position:i+1})).filter(p => norm(p.name).includes(term));
     podium.replaceChildren();
     podium.hidden = Boolean(term);
@@ -35,7 +35,7 @@
     }
     if (!rows.length) {
       const tr=document.createElement('tr'), td=document.createElement('td');
-      td.colSpan=4; td.textContent=term?'Nenhum jogador encontrado no TOP 50.':'Aguardando resultados.';
+      td.colSpan=4; td.textContent=term?'Nenhum jogador encontrado no ranking.':'Aguardando resultados.';
       tr.append(td); body.append(tr);
     }
   }
@@ -55,7 +55,7 @@
         results = snapshot.players.filter(p => Number.isInteger(p.total));
         render();
         const when = snapshot.updatedAt ? new Date(snapshot.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) : 'desconhecida';
-        status('Atualizado em ' + when);
+        status('Atualizado em ' + when + (results.length < snapshot.consulted ? ' • Lista parcial até a próxima atualização.' : ''));
         return;
       }
     } catch (_) { /* Sem snapshot: permite teste manual na prévia. */ }
@@ -96,7 +96,7 @@
     render();
     status(failed
       ? 'Consulta parcial: '+(members.length-failed)+' de '+members.length+' jogadores. '+failed+' falha(s). Classificação provisória, não definitiva.'
-      : 'TOP 50 atualizado • '+members.length+' jogadores consultados nos sete clubes.');
+      : 'Ranking atualizado • '+members.length+' jogadores consultados nos sete clubes.');
     if(failed) started=false;
   }
   document.addEventListener('DOMContentLoaded',()=>{
