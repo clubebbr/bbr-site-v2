@@ -169,8 +169,9 @@ async function loadDashboardData() {
                 </div>
                 <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"><strong>Troféus:</strong> ${Number(club.trophies || 0).toLocaleString("pt-BR")}</p>
                 <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_members.svg" alt="Membros" style="width: 18px; height: 18px; object-fit: contain;"><strong>Membros:</strong> ${memberCount}/30</p>
-                ${availableSpots > 0 ? `<p style="color: #4ade80; font-weight: 700; margin-top: 6px;">🟢 ${availableSpots} ${availableSpots === 1 ? "vaga disponível" : "vagas disponíveis"}</p>` : ""}
+                ${availableSpots > 0 ? `<p style="color: #4ade80; font-weight: 700; margin-top: 6px;">🟢 ${availableSpots} ${availableSpots === 1 ? "vaga disponível" : "vagas disponíveis"}</p><a class="club-recruitment-link" href="https://chat.whatsapp.com/DwEVHuudXZcKQdIjm5Skmc?s=cl&amp;p=a&amp;ilr=1" target="_blank" rel="noopener noreferrer" aria-label="Entrar no grupo de Recrutamento da BBR pelo WhatsApp">Entrar pelo Recrutamento ↗</a>` : ""}
             `;
+            card.querySelector(".club-recruitment-link")?.addEventListener("click", event => event.stopPropagation());
             clubGrid.appendChild(card);
         }
 
