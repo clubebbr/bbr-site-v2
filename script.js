@@ -148,7 +148,9 @@ async function loadDashboardData() {
                 ? 'Lendária 1+'
                 : normalizedTag === 'CQYU8RQP'
                     ? '100k de troféus acima'
-                    : '20k de troféus acima';
+                    : normalizedTag === '2GLJJVJ9V'
+                        ? 'Clube casual • Aberto a todos'
+                        : '20k de troféus acima';
             const card = document.createElement('div');
             card.className = 'club-card';
             card.style.cursor = 'pointer';
