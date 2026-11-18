@@ -849,3 +849,6 @@ body {
 }
 
 .club-whatsapp-icon { width: 19px; height: 19px; flex: 0 0 19px; margin-right: 8px; }
+
+#profile-ranked-champion[hidden] { display: none; }
+#profile-ranked-champion { margin-left: 0; }
