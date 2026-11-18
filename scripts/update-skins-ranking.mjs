@@ -51,6 +51,6 @@ if(failures.length) {
   throw Error('Snapshot nao atualizado: '+failures.length+' consulta(s) falharam');
 }
 results.sort((a,b)=>b.total-a.total||a.name.localeCompare(b.name,'pt-BR'));
-const snapshot={updatedAt:new Date().toISOString(),consulted:members.length,clubs:clubs.length,players:results.slice(0,50)};
+const snapshot={updatedAt:new Date().toISOString(),consulted:members.length,clubs:clubs.length,players:results};
 await writeFile('ranking-skins-data.json',JSON.stringify(snapshot,null,2)+'\n');
-console.log('TOP 50 salvo:',results.length,'jogadores verificados');
+console.log('Ranking completo salvo:',results.length,'jogadores verificados');
