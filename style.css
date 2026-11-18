@@ -905,3 +905,31 @@ body {
 @media (max-width: 768px) {
     body { background-attachment: scroll; }
 }
+
+/* Ranqueada: pontos atuais e maior pontuação da temporada, sem coluna Clube. */
+#ranqueada .ranked-data-table { width:100%; min-width:0; table-layout:auto; }
+#ranqueada .ranked-data-table th:nth-child(n+3),
+#ranqueada .ranked-data-table td:nth-child(n+3) { text-align:right; }
+#ranqueada .ranked-data-table td:nth-child(2) { white-space:normal; overflow-wrap:anywhere; }
+#ranqueada .ranked-data-table th { white-space:normal; }
+.ranked-score { display:inline-flex; align-items:center; justify-content:flex-end; gap:5px; white-space:nowrap; font-weight:800; font-variant-numeric:tabular-nums; }
+.ranked-score .ranked-emblem-table { margin:0; width:26px; height:26px; flex-shrink:0; }
+.ranked-podium-scores { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:12px; }
+.ranked-podium-scores > div { min-width:0; display:flex; flex-direction:column; align-items:center; gap:4px; padding:6px 2px; border-radius:9px; background:rgba(0,0,0,.17); }
+.ranked-podium-scores small { font-size:.63rem; font-weight:800; color:#fff; opacity:.85; }
+.ranked-podium-scores .ranked-score { color:var(--podium-color); font-size:clamp(.76rem,1.7vw,1.05rem); }
+.ranked-podium-scores .ranked-emblem-podium { width:24px; height:24px; margin:0; }
+.ranked-podium-badges { display:flex; flex-wrap:wrap; justify-content:center; gap:4px; margin-top:8px; }
+@media(max-width:600px) {
+ #ranqueada .table-card { padding:8px 4px; }
+ #ranqueada .ranked-data-table th,#ranqueada .ranked-data-table td { padding:9px 4px; font-size:clamp(.66rem,2.5vw,.83rem); }
+ #ranqueada .ranked-data-table .ranking-avatar { width:25px; height:25px; margin-right:4px; }
+ #ranqueada .ranked-data-table td:nth-child(2) { min-width:0; max-width:unset; }
+ #ranqueada .ranked-data-table .ranked-score { gap:2px; }
+ #ranqueada .ranked-data-table .ranked-emblem-table { width:19px; height:19px; }
+ .ranked-podium-scores { gap:3px; }
+ .ranked-podium-scores small { font-size:.52rem; }
+ .ranked-podium-scores .ranked-emblem-podium { width:17px; height:17px; }
+ .ranked-podium-scores .ranked-score { gap:2px; font-size:.68rem; }
+ .ranked-heading-note { display:block; font-size:.65rem; }
+}
