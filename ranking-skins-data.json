@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-18T13:46:25.577Z",
-  "consulted": 196,
+  "updatedAt": "2026-11-18T15:43:52.920Z",
+  "consulted": 195,
   "clubs": 7,
   "staleCount": 0,
   "players": [
@@ -331,7 +331,7 @@
       "name": "lipe",
       "club": "BBR³",
       "iconId": 28000393,
-      "total": 658
+      "total": 660
     },
     {
       "tag": "RC0R9LG8",
@@ -715,7 +715,7 @@
       "tag": "2J8CV08YUY",
       "name": "PernaLonga",
       "club": "BBR | ESPORTS",
-      "iconId": 28000299,
+      "iconId": 28000000,
       "total": 553
     },
     {
@@ -793,7 +793,7 @@
       "name": "BBR|Zeus⚡",
       "club": "BBR¹",
       "iconId": 28000395,
-      "total": 540
+      "total": 541
     },
     {
       "tag": "Y0RJ82CVR",
@@ -919,7 +919,7 @@
       "name": "BBR | SHANKS",
       "club": "BBR¹",
       "iconId": 28000565,
-      "total": 499
+      "total": 500
     },
     {
       "tag": "RG8RJPCVY",
@@ -1125,11 +1125,11 @@
       "total": 386
     },
     {
-      "tag": "28GJ0JGLCC",
-      "name": "BBR | HZWLUC",
-      "club": "BBR | ESPORTS",
-      "iconId": 28000435,
-      "total": 379
+      "tag": "Q9JRJVYL0",
+      "name": "BBR | de7",
+      "club": "BBR¹",
+      "iconId": 28000000,
+      "total": 378
     },
     {
       "tag": "YVYP9C0V0",
@@ -1151,13 +1151,6 @@
       "club": "BBR¹",
       "iconId": 28000360,
       "total": 377
-    },
-    {
-      "tag": "Q9JRJVYL0",
-      "name": "BBR | de7",
-      "club": "BBR¹",
-      "iconId": 28000000,
-      "total": 376
     },
     {
       "tag": "22Y9PJJC9",
