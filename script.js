@@ -672,8 +672,8 @@ async function loadRankedRanking() {
     }
 }
 
-// Patrocinador da temporada: altere somente a tag abaixo na próxima temporada.
-const RANKED_SPONSOR_TAG = '#PLY9L9QPR';
+// Patrocinador da temporada: deixe vazio quando não houver patrocinador.
+const RANKED_SPONSOR_TAG = '';
 
 function isRankedSponsor(player) {
     return String(player.tag || '').replace('#', '').toUpperCase() ===
