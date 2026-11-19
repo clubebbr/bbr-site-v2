@@ -144,13 +144,13 @@ async function loadDashboardData() {
             const memberCount = club.members?.length ?? club.membersCount ?? 0;
             const availableSpots = Math.max(0, 30 - memberCount);
             const normalizedTag = String(club.tag || '').replace('#', '').toUpperCase();
-            const clubDescription = normalizedTag === '882UJP9GR'
-                ? 'Lendária 1+'
+            const clubInfo = normalizedTag === '882UJP9GR'
+                ? { description: 'Clube focado no Ranqueado', requirement: 'Lendária 1+' }
                 : normalizedTag === 'CQYU8RQP'
-                    ? '100k de troféus acima'
+                    ? { description: 'Clube focado em troféus', requirement: '100 mil+ troféus' }
                     : normalizedTag === '2GLJJVJ9V'
-                        ? 'Clube casual • Aberto a todos'
-                        : '20k de troféus acima';
+                        ? { description: 'Clube casual, aberto a todos', requirement: 'Sem requisitos mínimos' }
+                        : { description: 'Clube geral da comunidade BBR', requirement: '20 mil+ troféus' };
             const card = document.createElement('div');
             card.className = 'club-card';
             card.style.cursor = 'pointer';
@@ -164,7 +164,8 @@ async function loadDashboardData() {
                     <div>
                         <h3 style="margin: 0;">${club.name}</h3>
                         <p class="subtext" style="margin: 0;">${club.tag}</p>
-                        <p class="subtext" style="margin: 3px 0 0; font-size: 0.85rem;">${clubDescription}</p>
+                        <p class="subtext" style="margin: 3px 0 0; font-size: 0.85rem;">${clubInfo.description}</p>
+                        <p class="subtext" style="margin: 5px 0 0; font-size: 0.78rem;"><span style="display: inline-block; padding: 3px 8px; border-radius: 6px; background: rgba(150, 100, 220, 0.18); color: #d9b9ff;">${clubInfo.requirement}</span></p>
                     </div>
                 </div>
                 <p style="display: flex; align-items: center; gap: 5px;"><img src="imagens/icon_trophy.png" alt="Troféus" style="width: 18px; height: 18px; object-fit: contain;"><strong>Troféus:</strong> ${Number(club.trophies || 0).toLocaleString("pt-BR")}</p>
