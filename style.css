@@ -933,3 +933,22 @@ body {
  .ranked-podium-scores .ranked-score { gap:2px; font-size:.68rem; }
  .ranked-heading-note { display:block; font-size:.65rem; }
 }
+
+/* Pódio responsivo: tags sempre dentro do cartão, em uma linha. */
+.podium-card { container-type: inline-size; }
+.podium-card .ranking-badges,
+.podium-card .podium-club-with-badges .ranking-badges {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+}
+.podium-card .ranking-badges .club-role-badge,
+.podium-card .ranking-badges .ranked-sponsor-badge {
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 0;
+    padding-inline: clamp(2px, 1.4cqw, 6px);
+    font-size: clamp(0.36rem, 5.1cqw, 0.58rem);
+    letter-spacing: 0;
+    white-space: nowrap;
+}
