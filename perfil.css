@@ -15,6 +15,8 @@
 #perfil .profile-tag{color:var(--text-sub);font-size:.9rem}
 #perfil .profile-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
 #perfil .profile-chip{border:1px solid #654382;background:#322044;border-radius:30px;padding:4px 10px;font-size:.73rem}
+#perfil #profile-ranked-champion{margin:0;padding:4px 10px;font-size:.73rem;line-height:normal;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+#perfil .profile-identity > div{min-width:0}
 #perfil .profile-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:18px}
 #perfil .profile-stat{background:#191129;border:1px solid var(--border-color);border-radius:12px;padding:14px;min-width:0}
 #perfil .profile-stat small{display:flex;gap:6px;align-items:center;color:var(--text-sub);font-size:.76rem;min-height:20px}
