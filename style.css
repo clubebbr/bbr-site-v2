@@ -952,3 +952,24 @@ body {
     letter-spacing: 0;
     white-space: nowrap;
 }
+
+/* TOP 3 Ranqueado: pontuações empilhadas apenas em telas pequenas. */
+@media (max-width: 600px) {
+  #ranqueada .ranked-podium-scores {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+  #ranqueada .ranked-podium-scores > div {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 3px;
+    gap: 5px;
+  }
+  #ranqueada .ranked-podium-scores small { font-size: .58rem; }
+  #ranqueada .ranked-podium-scores .ranked-score {
+    font-size: clamp(.68rem, 2.7vw, .9rem);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  #ranqueada .ranked-podium-scores .ranked-emblem-podium { width: 20px; height: 20px; }
+}
