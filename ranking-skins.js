@@ -55,16 +55,14 @@
       const nameText = document.createElement('strong');
       nameText.textContent = p.name;
       name.append(nameText);
-      const club = document.createElement('td');
-      club.textContent = p.club;
       const total = document.createElement('td');
       total.textContent = fmt(p.total);
-      tr.append(position,name,club,total);
+      tr.append(position,name,total);
       body.append(tr);
     }
     if (!rows.length) {
       const tr=document.createElement('tr'), td=document.createElement('td');
-      td.colSpan=4; td.textContent=term?'Nenhum jogador encontrado no ranking.':'Aguardando resultados.';
+      td.colSpan=3; td.textContent=term?'Nenhum jogador encontrado no ranking.':'Aguardando resultados.';
       tr.append(td); body.append(tr);
     }
   }
