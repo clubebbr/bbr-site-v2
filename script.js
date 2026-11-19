@@ -334,7 +334,7 @@ Object.assign(document.createElement('img'), {
             const badges = document.createElement('div');
             badges.className = 'ranked-podium-badges';
             appendPlayerBadges(badges, player);
-            card.appendChild(badges);
+            card.insertBefore(badges, card.querySelector('.podium-trophies'));
             podium.appendChild(card);
         });
     }
