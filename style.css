@@ -975,7 +975,8 @@ body {
 }
 
 /* Fundo da pontuação no pódio de troféus, igual ao ranqueado */
-#ranking-podium .podium-trophies {
+#ranking-podium .podium-trophies,
+#skins-ranking-podium .podium-trophies {
     padding: 6px 2px;
     border-radius: 9px;
     background: rgba(0, 0, 0, .17);
