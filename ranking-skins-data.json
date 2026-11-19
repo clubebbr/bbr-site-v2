@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-18T15:43:52.920Z",
-  "consulted": 195,
+  "updatedAt": "2026-11-19T00:25:54.754Z",
+  "consulted": 194,
   "clubs": 7,
   "staleCount": 0,
   "players": [
@@ -31,13 +31,6 @@
       "club": "BBR | Elite",
       "iconId": 28000932,
       "total": 882
-    },
-    {
-      "tag": "PL222CJLG",
-      "name": "BBR | CHY₱3RØN",
-      "club": "BBR | Elite",
-      "iconId": 28001344,
-      "total": 867
     },
     {
       "tag": "8LU0929P",
@@ -82,18 +75,18 @@
       "total": 818
     },
     {
+      "tag": "2JU9CUC",
+      "name": "BBR | Binho",
+      "club": "BBR¹",
+      "iconId": 28001369,
+      "total": 797
+    },
+    {
       "tag": "GRLLL8Y9",
       "name": "BBR | Thiago 🔥",
       "club": "BBR¹",
       "iconId": 28001398,
       "total": 797
-    },
-    {
-      "tag": "2JU9CUC",
-      "name": "BBR | Binho",
-      "club": "BBR¹",
-      "iconId": 28001369,
-      "total": 794
     },
     {
       "tag": "RGJJLQGY",
@@ -121,7 +114,7 @@
       "name": "✘GBh♚el✘",
       "club": "BBR¹",
       "iconId": 28001059,
-      "total": 768
+      "total": 769
     },
     {
       "tag": "8PRYP20QC",
@@ -663,17 +656,17 @@
       "total": 566
     },
     {
-      "tag": "8GR8GPPJY",
-      "name": "BBR | YURIZAUM",
-      "club": "BBR³",
-      "iconId": 28000996,
-      "total": 564
-    },
-    {
       "tag": "LJU88CYGP",
       "name": "BBR|MIÓ DOS MIÓ",
       "club": "BBR | Elite",
       "iconId": 28000187,
+      "total": 565
+    },
+    {
+      "tag": "8GR8GPPJY",
+      "name": "BBR | YURIZAUM",
+      "club": "BBR³",
+      "iconId": 28000996,
       "total": 564
     },
     {
@@ -719,6 +712,13 @@
       "total": 553
     },
     {
+      "tag": "8RJGR8CJG",
+      "name": "BBR | Marquin",
+      "club": "BBR⁵",
+      "iconId": 28000339,
+      "total": 552
+    },
+    {
       "tag": "PR002PPC0",
       "name": "BBR|Muz!n§",
       "club": "BBR³",
@@ -726,16 +726,9 @@
       "total": 552
     },
     {
-      "tag": "8RJGR8CJG",
-      "name": "BBR | Marquin",
-      "club": "BBR⁵",
-      "iconId": 28000339,
-      "total": 551
-    },
-    {
       "tag": "LPCJGL208",
       "name": "𝙴𝚗𝚎𝚓𝚘𝚝𝚊⒒",
-      "club": "BBR⁵",
+      "club": "BBR²",
       "iconId": 28000019,
       "total": 551
     },
@@ -877,7 +870,7 @@
       "name": "✩🎀ᴍᴀʀɪ🎀✩",
       "club": "BBR⁴",
       "iconId": 28000458,
-      "total": 513
+      "total": 514
     },
     {
       "tag": "P8QP8YCUU",
@@ -901,18 +894,18 @@
       "total": 508
     },
     {
-      "tag": "L2UCU8L8Q",
-      "name": "prime anya.",
-      "club": "BBR | ESPORTS",
-      "iconId": 28000000,
-      "total": 503
-    },
-    {
       "tag": "PUR8QRYLL",
       "name": "BBR | Ligeiro",
       "club": "BBR⁴",
       "iconId": 28000527,
-      "total": 502
+      "total": 504
+    },
+    {
+      "tag": "L2UCU8L8Q",
+      "name": "prime anya.",
+      "club": "BBR | ESPORTS",
+      "iconId": 28001227,
+      "total": 503
     },
     {
       "tag": "LCG08PPGJ",
@@ -1001,7 +994,7 @@
     {
       "tag": "GCUCCYUGU",
       "name": "BBR| Marquin",
-      "club": "BBR²",
+      "club": "BBR | ESPORTS",
       "iconId": 28000443,
       "total": 454
     },
@@ -1044,7 +1037,7 @@
       "tag": "JCRYP0PJ",
       "name": "BBR | Myrrdan†",
       "club": "BBR²",
-      "iconId": 28000023,
+      "iconId": 28001070,
       "total": 438
     },
     {
@@ -1087,7 +1080,7 @@
       "name": "BBR|GUIA1",
       "club": "BBR¹",
       "iconId": 28001239,
-      "total": 415
+      "total": 416
     },
     {
       "tag": "PYC02RLU2",
@@ -1128,7 +1121,14 @@
       "tag": "Q9JRJVYL0",
       "name": "BBR | de7",
       "club": "BBR¹",
-      "iconId": 28000000,
+      "iconId": 28000401,
+      "total": 383
+    },
+    {
+      "tag": "9P80G02YY",
+      "name": "JOAUM",
+      "club": "BBR¹",
+      "iconId": 28000360,
       "total": 378
     },
     {
@@ -1143,13 +1143,6 @@
       "name": "BBR|Cabrita愛",
       "club": "BBR⁴",
       "iconId": 28000771,
-      "total": 377
-    },
-    {
-      "tag": "9P80G02YY",
-      "name": "JOAUM",
-      "club": "BBR¹",
-      "iconId": 28000360,
       "total": 377
     },
     {
@@ -1255,14 +1248,14 @@
       "name": "BBR | Frost",
       "club": "BBR³",
       "iconId": 28000121,
-      "total": 335
+      "total": 336
     },
     {
       "tag": "2G02CLLRJL",
       "name": "TUTUZISS",
       "club": "BBR⁵",
       "iconId": 28000498,
-      "total": 334
+      "total": 335
     },
     {
       "tag": "2G9JRQ9QPP",
@@ -1310,7 +1303,7 @@
       "tag": "QQJYRGYRQ",
       "name": "larasz",
       "club": "BBR⁵",
-      "iconId": 28000305,
+      "iconId": 28000759,
       "total": 234
     },
     {
