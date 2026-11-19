@@ -1,9 +1,8 @@
 import { verifyTurnstile } from './turnstile.mjs';
-import { skins } from './skins.mjs';
 // Backend preparado para Cloudflare Pages Functions. Não implantar antes da configuração.
 const START = Date.parse('2026-12-01T03:00:00Z');
 const END = Date.parse('2026-12-14T03:00:00Z');
-const CATEGORIES = new Set(['mitica','lendaria','mais_legal','melhor_membro','perfil','ranqueada']);
+const CATEGORIES = new Set(['mais_legal','melhor_membro','perfil','ranqueada']);
 const headers = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 const reply = (status,data)=>new Response(JSON.stringify(data),{status,headers});
 export function isOpen(now=Date.now()) { return now>=START && now<END; }
@@ -16,8 +15,7 @@ export async function submit(request,env,now=Date.now(),testMode=false) {
   const { nominations, turnstileToken } = body;
   if (!nominations || typeof nominations !== 'object' || Array.isArray(nominations)) return reply(400,{error:'Confira suas indicações.'});
   const entries=Object.entries(nominations);
-  if(!entries.length || entries.length>6 || entries.some(([category,name])=>!CATEGORIES.has(category)||typeof name!=='string'||!name.trim()||name.trim().length>100)) return reply(400,{error:'Confira suas indicações.'});
-  if(entries.some(([category,name]) => skins[category] && !skins[category].includes(name.trim()))) return reply(400,{error:'Skin inválida.'});
+  if(!entries.length || entries.length>4 || entries.some(([category,name])=>!CATEGORIES.has(category)||typeof name!=='string'||!name.trim()||name.trim().length>100)) return reply(400,{error:'Confira suas indicações.'});
   if(!env.TURNSTILE_SECRET_KEY) return reply(503,{error:'Verificação de segurança indisponível.'});
   if(!await verifyTurnstile(turnstileToken,env.TURNSTILE_SECRET_KEY,request)) return reply(403,{error:'Não foi possível verificar o acesso. Tente novamente.'});
   const id=(testMode ? 'test-' : '')+crypto.randomUUID();
