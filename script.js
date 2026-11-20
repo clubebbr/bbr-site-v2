@@ -150,7 +150,7 @@ async function loadDashboardData() {
                     ? { description: 'Clube focado em troféus', requirement: '100 mil+ troféus' }
                     : normalizedTag === '2GLJJVJ9V'
                         ? { description: 'Clube casual, aberto a todos', requirement: 'Sem requisitos mínimos' }
-                        : { description: 'Clube geral da comunidade BBR', requirement: '20 mil+ troféus' };
+                        : { description: 'Clube geral', requirement: '20 mil+ troféus' };
             const card = document.createElement('div');
             card.className = 'club-card club-card-centered';
             card.style.cursor = 'pointer';
