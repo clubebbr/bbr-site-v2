@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-20T00:39:32.204Z",
-  "consulted": 198,
+  "updatedAt": "2026-11-20T15:30:29.683Z",
+  "consulted": 201,
   "clubs": 7,
   "staleCount": 0,
   "players": [
@@ -51,7 +51,7 @@
       "name": "BBR|bruvisk⚡️",
       "club": "BBR | Elite",
       "iconId": 28000533,
-      "total": 852
+      "total": 855
     },
     {
       "tag": "8Q0JP9GJ",
@@ -100,7 +100,7 @@
       "name": "BBR | Lord Rod",
       "club": "BBR | Elite",
       "iconId": 28001077,
-      "total": 787
+      "total": 788
     },
     {
       "tag": "RGJJLQGY",
@@ -114,7 +114,7 @@
       "name": "BBR | Satoru",
       "club": "BBR³",
       "iconId": 28001245,
-      "total": 774
+      "total": 775
     },
     {
       "tag": "U2VGVVJV",
@@ -159,6 +159,13 @@
       "total": 742
     },
     {
+      "tag": "PLY9L9QPR",
+      "name": "BBR |ŁØÐƵin",
+      "club": "BBR | ESPORTS",
+      "iconId": 28001216,
+      "total": 740
+    },
+    {
       "tag": "22VYY2J9R",
       "name": "BBR | Adriss 🌠",
       "club": "BBR¹",
@@ -166,11 +173,11 @@
       "total": 737
     },
     {
-      "tag": "PLY9L9QPR",
-      "name": "BBR| CAFÉ☕️",
-      "club": "BBR | ESPORTS",
-      "iconId": 28000823,
-      "total": 733
+      "tag": "8J9QRR2C",
+      "name": "DaLLs",
+      "club": "BBR³",
+      "iconId": 28000843,
+      "total": 721
     },
     {
       "tag": "9UQRYCV9J",
@@ -187,13 +194,6 @@
       "total": 713
     },
     {
-      "tag": "8J9QRR2C",
-      "name": "DaLLs",
-      "club": "BBR³",
-      "iconId": 28000843,
-      "total": 713
-    },
-    {
       "tag": "22YQU20JRU",
       "name": "BBR | crw7xz 愛",
       "club": "BBR⁵",
@@ -206,6 +206,13 @@
       "club": "BBR⁴",
       "iconId": 28001014,
       "total": 703
+    },
+    {
+      "tag": "PVU9YU29Q",
+      "name": "BBR|Artferroli",
+      "club": "BBR³",
+      "iconId": 28000375,
+      "total": 701
     },
     {
       "tag": "LU0Q9Y08U",
@@ -241,13 +248,6 @@
       "club": "BBR | ESPORTS",
       "iconId": 28001292,
       "total": 692
-    },
-    {
-      "tag": "PVU9YU29Q",
-      "name": "BBR|Artferroli",
-      "club": "BBR³",
-      "iconId": 28000375,
-      "total": 691
     },
     {
       "tag": "9RUCU2RJR",
@@ -289,14 +289,21 @@
       "name": "BBR |NightFall",
       "club": "BBR | ESPORTS",
       "iconId": 28000682,
-      "total": 674
+      "total": 677
     },
     {
       "tag": "C2Q0VGUR",
       "name": "BBR | Sr. Butão",
       "club": "BBR³",
       "iconId": 28001291,
-      "total": 672
+      "total": 674
+    },
+    {
+      "tag": "9LV89GV",
+      "name": "BBR | Firebird",
+      "club": "BBR³",
+      "iconId": 28000403,
+      "total": 668
     },
     {
       "tag": "YJLPPVUYG",
@@ -320,11 +327,11 @@
       "total": 665
     },
     {
-      "tag": "9LV89GV",
-      "name": "BBR | Firebird",
-      "club": "BBR³",
-      "iconId": 28000403,
-      "total": 662
+      "tag": "RC0R9LG8",
+      "name": "Magnus Carlsen",
+      "club": "BBR | ESPORTS",
+      "iconId": 28001360,
+      "total": 664
     },
     {
       "tag": "PYLJ08Y2C",
@@ -332,13 +339,6 @@
       "club": "BBR³",
       "iconId": 28000393,
       "total": 662
-    },
-    {
-      "tag": "RC0R9LG8",
-      "name": "Magnus Carlsen",
-      "club": "BBR | ESPORTS",
-      "iconId": 28000760,
-      "total": 661
     },
     {
       "tag": "20URGYY9J",
@@ -387,7 +387,7 @@
       "name": "SKS_GUSTACR07♧",
       "club": "BBR | Elite",
       "iconId": 28000299,
-      "total": 648
+      "total": 649
     },
     {
       "tag": "YY2PRUGC",
@@ -400,15 +400,15 @@
       "tag": "GRR982GV",
       "name": "BBR | SHADØW",
       "club": "BBR | Elite",
-      "iconId": 28000982,
-      "total": 644
+      "iconId": 28000272,
+      "total": 645
     },
     {
       "tag": "2YY2PYG",
       "name": "BBR | AlanNL",
       "club": "BBR | Elite",
       "iconId": 28001004,
-      "total": 642
+      "total": 643
     },
     {
       "tag": "8U2PQGVQ",
@@ -460,10 +460,24 @@
       "total": 627
     },
     {
+      "tag": "LYY998RG",
+      "name": "BBR | jintteok",
+      "club": "BBR¹",
+      "iconId": 28001351,
+      "total": 626
+    },
+    {
       "tag": "82RQJRLV",
       "name": "BBR | alves",
       "club": "BBR⁴",
       "iconId": 28001367,
+      "total": 625
+    },
+    {
+      "tag": "P0UL2QJ0V",
+      "name": "Mike Mentzer🐐",
+      "club": "BBR | ESPORTS",
+      "iconId": 28000000,
       "total": 625
     },
     {
@@ -474,25 +488,11 @@
       "total": 624
     },
     {
-      "tag": "P0UL2QJ0V",
-      "name": "Mike Mentzer🐐",
-      "club": "BBR | ESPORTS",
-      "iconId": 28000000,
-      "total": 624
-    },
-    {
       "tag": "9Y289Q0YP",
       "name": "BBR | Chans12",
       "club": "BBR¹",
       "iconId": 28000838,
       "total": 621
-    },
-    {
-      "tag": "LYY998RG",
-      "name": "BBR | jintteok",
-      "club": "BBR¹",
-      "iconId": 28001351,
-      "total": 620
     },
     {
       "tag": "8RRLV0P8P",
@@ -502,18 +502,18 @@
       "total": 619
     },
     {
+      "tag": "8G9L280J0",
+      "name": "BBR | Bruno",
+      "club": "BBR¹",
+      "iconId": 28000402,
+      "total": 617
+    },
+    {
       "tag": "2UQP2CCQ8",
       "name": "BBR |⛩️ＫＡＩＯＢＡ🎋",
       "club": "BBR | Elite",
       "iconId": 28000238,
       "total": 616
-    },
-    {
-      "tag": "8G9L280J0",
-      "name": "BBR | Bruno",
-      "club": "BBR¹",
-      "iconId": 28000402,
-      "total": 615
     },
     {
       "tag": "RCP28R8J9",
@@ -558,17 +558,17 @@
       "total": 599
     },
     {
-      "tag": "9CJLQLY",
-      "name": "BBR | bcmaguiar",
-      "club": "BBR⁵",
-      "iconId": 28000221,
-      "total": 595
-    },
-    {
       "tag": "Q982UYRY",
       "name": "Sofi Tagliari",
       "club": "BBR | Elite",
       "iconId": 28000703,
+      "total": 598
+    },
+    {
+      "tag": "9CJLQLY",
+      "name": "BBR | bcmaguiar",
+      "club": "BBR⁵",
+      "iconId": 28000221,
       "total": 595
     },
     {
@@ -635,6 +635,13 @@
       "total": 578
     },
     {
+      "tag": "9JJ0820V9",
+      "name": "Zenzo",
+      "club": "BBR | Elite",
+      "iconId": 28000919,
+      "total": 573
+    },
+    {
       "tag": "9280UUL8Q",
       "name": "BBR | Berg",
       "club": "BBR | ESPORTS",
@@ -656,13 +663,6 @@
       "total": 570
     },
     {
-      "tag": "9JJ0820V9",
-      "name": "Zenzo",
-      "club": "BBR | Elite",
-      "iconId": 28000919,
-      "total": 570
-    },
-    {
       "tag": "QCQVJC9CG",
       "name": "BBR|JPジ💜",
       "club": "BBR²",
@@ -670,18 +670,25 @@
       "total": 569
     },
     {
+      "tag": "Y2LLU00R",
+      "name": "Ale",
+      "club": "BBR⁵",
+      "iconId": 28000409,
+      "total": 568
+    },
+    {
       "tag": "LJU88CYGP",
       "name": "BBR|MIÓ DOS MIÓ",
       "club": "BBR | Elite",
       "iconId": 28000187,
-      "total": 565
+      "total": 568
     },
     {
       "tag": "8GR8GPPJY",
       "name": "BBR | YURIZAUM",
       "club": "BBR³",
       "iconId": 28000996,
-      "total": 564
+      "total": 566
     },
     {
       "tag": "GL9CUY2C0",
@@ -691,39 +698,39 @@
       "total": 564
     },
     {
-      "tag": "Y2LLU00R",
-      "name": "Ale",
-      "club": "BBR⁵",
-      "iconId": 28000409,
+      "tag": "LPV90Y0CP",
+      "name": "BBR|Shyzo 🎴",
+      "club": "BBR²",
+      "iconId": 28000810,
       "total": 563
     },
     {
       "tag": "2J8CV08YUY",
       "name": "PernaLonga",
       "club": "BBR | ESPORTS",
-      "iconId": 28000278,
-      "total": 562
+      "iconId": 28000432,
+      "total": 563
     },
     {
       "tag": "PPGP8YUCV",
       "name": "𝐁𝐁𝐑|Maldini³",
       "club": "BBR⁵",
       "iconId": 28001155,
-      "total": 560
-    },
-    {
-      "tag": "LPV90Y0CP",
-      "name": "BBR|Shyzo 🎴",
-      "club": "BBR²",
-      "iconId": 28000810,
-      "total": 560
+      "total": 561
     },
     {
       "tag": "8RJGR8CJG",
       "name": "BBR | Marquin",
       "club": "BBR⁵",
-      "iconId": 28000339,
+      "iconId": 28000112,
       "total": 559
+    },
+    {
+      "tag": "PUQV08PGR",
+      "name": "!Atlantis.🖤",
+      "club": "BBR²",
+      "iconId": 28000633,
+      "total": 556
     },
     {
       "tag": "U0P0G9R9",
@@ -737,7 +744,7 @@
       "name": "BBR|Muz!n§",
       "club": "BBR³",
       "iconId": 28000585,
-      "total": 555
+      "total": 556
     },
     {
       "tag": "LPCJGL208",
@@ -751,7 +758,21 @@
       "name": "garrıncha.",
       "club": "BBR | ESPORTS",
       "iconId": 28000529,
-      "total": 552
+      "total": 553
+    },
+    {
+      "tag": "82Q98LG2",
+      "name": "BBR | Blackout〆",
+      "club": "BBR | ESPORTS",
+      "iconId": 28000014,
+      "total": 551
+    },
+    {
+      "tag": "2RPY899UGV",
+      "name": "BBR | ruiva 🦊",
+      "club": "BBR²",
+      "iconId": 28000281,
+      "total": 551
     },
     {
       "tag": "2VUL09QVV",
@@ -759,20 +780,6 @@
       "club": "BBR⁴",
       "iconId": 28000943,
       "total": 551
-    },
-    {
-      "tag": "82Q98LG2",
-      "name": "BBR | Blackout〆",
-      "club": "BBR | ESPORTS",
-      "iconId": 28000014,
-      "total": 550
-    },
-    {
-      "tag": "2RPY899UGV",
-      "name": "BBR | ruiva 🦊",
-      "club": "BBR²",
-      "iconId": 28000281,
-      "total": 550
     },
     {
       "tag": "2LY80YQJ2L",
@@ -821,7 +828,7 @@
       "name": "BBR | Wisleyvm",
       "club": "BBR²",
       "iconId": 28001237,
-      "total": 535
+      "total": 537
     },
     {
       "tag": "992YQJPPG",
@@ -835,7 +842,7 @@
       "name": "WENP JOÃO 10",
       "club": "BBR⁴",
       "iconId": 28000979,
-      "total": 532
+      "total": 533
     },
     {
       "tag": "2QYQPPY9C",
@@ -859,6 +866,13 @@
       "total": 526
     },
     {
+      "tag": "990G09LVC",
+      "name": "BBR |Bispow⚡️",
+      "club": "BBR¹",
+      "iconId": 28001273,
+      "total": 522
+    },
+    {
       "tag": "GRVLCVR8U",
       "name": "BBR|AMBULÂNCIA",
       "club": "BBR⁴",
@@ -871,13 +885,6 @@
       "club": "BBR¹",
       "iconId": 28000514,
       "total": 521
-    },
-    {
-      "tag": "990G09LVC",
-      "name": "BBR |Bispow⚡️",
-      "club": "BBR¹",
-      "iconId": 28001273,
-      "total": 520
     },
     {
       "tag": "P8QP8YCUU",
@@ -894,18 +901,18 @@
       "total": 516
     },
     {
+      "tag": "2JYGJQLC8",
+      "name": "BBR | phz",
+      "club": "BBR¹",
+      "iconId": 28000573,
+      "total": 513
+    },
+    {
       "tag": "92Y2P8GJP",
       "name": "BBR|RYAN❄️",
       "club": "BBR³",
       "iconId": 28000938,
       "total": 511
-    },
-    {
-      "tag": "2JYGJQLC8",
-      "name": "BBR | phz",
-      "club": "BBR¹",
-      "iconId": 28000573,
-      "total": 510
     },
     {
       "tag": "PUR8QRYLL",
@@ -985,17 +992,17 @@
       "total": 480
     },
     {
-      "tag": "GCL02JCQY",
-      "name": "BBR |JÃO🇧🇷",
-      "club": "BBR⁵",
-      "iconId": 28001344,
-      "total": 470
-    },
-    {
       "tag": "PJ9LR92JG",
       "name": "ECS|Yami",
       "club": "BBR | ESPORTS",
       "iconId": 28000156,
+      "total": 471
+    },
+    {
+      "tag": "GCL02JCQY",
+      "name": "BBR |JÃO🇧🇷",
+      "club": "BBR⁵",
+      "iconId": 28001344,
       "total": 470
     },
     {
@@ -1027,18 +1034,18 @@
       "total": 448
     },
     {
+      "tag": "229GQC2V0",
+      "name": "𝖎𝖓𝖋𝖎𝖊𝖑",
+      "club": "BBR³",
+      "iconId": 28001053,
+      "total": 444
+    },
+    {
       "tag": "UY2PCURJY",
       "name": "VinnyMaster",
       "club": "BBR²",
       "iconId": 28000606,
       "total": 444
-    },
-    {
-      "tag": "229GQC2V0",
-      "name": "𝖎𝖓𝖋𝖎𝖊𝖑",
-      "club": "BBR³",
-      "iconId": 28001053,
-      "total": 443
     },
     {
       "tag": "GPQQ9VR",
@@ -1073,7 +1080,7 @@
       "name": "BBR|Bem_capaz!",
       "club": "BBR⁵",
       "iconId": 28000463,
-      "total": 433
+      "total": 434
     },
     {
       "tag": "JCC9CUJ9G",
@@ -1108,7 +1115,7 @@
       "name": "BBR/ALLANZIN2.0",
       "club": "BBR⁵",
       "iconId": 28000758,
-      "total": 413
+      "total": 416
     },
     {
       "tag": "2RPCJVP9C0",
@@ -1125,6 +1132,13 @@
       "total": 399
     },
     {
+      "tag": "8L9CVGYL2",
+      "name": "/alanpa/",
+      "club": "BBR⁵",
+      "iconId": 28000399,
+      "total": 398
+    },
+    {
       "tag": "82YGPP08Y",
       "name": "BBR | Max",
       "club": "BBR⁵",
@@ -1139,11 +1153,18 @@
       "total": 393
     },
     {
+      "tag": "Q9YUUCYL0",
+      "name": "𝙩𝙩𝙠:𝙇𝙪1𝙯",
+      "club": "BBR¹",
+      "iconId": 28001268,
+      "total": 391
+    },
+    {
       "tag": "2QCV88QGPP",
       "name": "BBR | Jocy525",
       "club": "BBR³",
       "iconId": 28001239,
-      "total": 388
+      "total": 389
     },
     {
       "tag": "9P80G02YY",
@@ -1171,7 +1192,7 @@
       "name": "BBR|Helo thv",
       "club": "BBR⁴",
       "iconId": 28000399,
-      "total": 376
+      "total": 377
     },
     {
       "tag": "22999RQ80U",
@@ -1202,6 +1223,13 @@
       "total": 361
     },
     {
+      "tag": "2RC92JU89P",
+      "name": "BBR|RคyColdV8🐉",
+      "club": "BBR²",
+      "iconId": 28000304,
+      "total": 361
+    },
+    {
       "tag": "RG82Q92YL",
       "name": "BBR|THÏX🔥",
       "club": "BBR⁵",
@@ -1214,13 +1242,6 @@
       "club": "BBR⁵",
       "iconId": 28000586,
       "total": 359
-    },
-    {
-      "tag": "2RC92JU89P",
-      "name": "BBR|RคyColdV8🐉",
-      "club": "BBR²",
-      "iconId": 28000304,
-      "total": 358
     },
     {
       "tag": "2UP2LCGP20",
@@ -1258,17 +1279,17 @@
       "total": 343
     },
     {
-      "tag": "Q80L0P0",
-      "name": "BBR | Parzival",
-      "club": "BBR⁵",
-      "iconId": 28000574,
-      "total": 340
-    },
-    {
       "tag": "UJ9UCLUC",
       "name": "Little Creed",
       "club": "BBR⁵",
       "iconId": 28000610,
+      "total": 341
+    },
+    {
+      "tag": "Q80L0P0",
+      "name": "BBR | Parzival",
+      "club": "BBR⁵",
+      "iconId": 28000574,
       "total": 340
     },
     {
@@ -1297,7 +1318,7 @@
       "name": "BBR|Raposa²",
       "club": "BBR⁵",
       "iconId": 28000660,
-      "total": 263
+      "total": 264
     },
     {
       "tag": "VULC2CRG",
@@ -1311,7 +1332,7 @@
       "name": "Nic",
       "club": "BBR³",
       "iconId": 28001320,
-      "total": 256
+      "total": 259
     },
     {
       "tag": "2RJVPG0PUR",
@@ -1360,14 +1381,14 @@
       "name": "BBR |Lopes",
       "club": "BBR²",
       "iconId": 28000244,
-      "total": 195
+      "total": 196
     },
     {
       "tag": "982CYJPUY",
       "name": "BBR | 𝑨ᴜʀᴇx",
       "club": "BBR²",
       "iconId": 28000156,
-      "total": 187
+      "total": 188
     },
     {
       "tag": "2CQC098LC8",
@@ -1388,7 +1409,7 @@
       "name": "negobrawl",
       "club": "BBR⁵",
       "iconId": 28000026,
-      "total": 63
+      "total": 64
     }
   ]
 }
