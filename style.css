@@ -981,3 +981,14 @@ body {
     border-radius: 9px;
     background: rgba(0, 0, 0, .17);
 }
+
+/* Clubes: ícone e informações centralizados */
+.club-card-centered { display: flex; flex-direction: column; align-items: stretch; text-align: center; overflow-x: hidden; }
+.club-card-centered .club-card-heading { display: flex; flex-direction: column; align-items: center; gap: 7px; margin-bottom: 12px; }
+.club-card-centered .club-card-heading-text { width: 100%; min-width: 0; }
+.club-card-centered .club-card-heading-text h3 { overflow-wrap: anywhere; }
+.club-card-centered .club-card-heading-text .subtext { line-height: 1.45; }
+.club-card-centered .club-card-stats { border-top: 1px solid rgba(174,99,255,.28); padding-top: 12px; display: flex; flex-direction: column; align-items: stretch; flex: 1; }
+.club-card-centered .club-card-stats > p { justify-content: center; flex-wrap: wrap; margin: 4px 0; }
+.club-card-centered .club-recruitment-link { margin-top: auto; width: 100%; box-sizing: border-box; justify-content: center; }
+@media (max-width: 600px) { .club-card-centered { padding: 14px; } .club-card-centered .club-card-heading { gap: 5px; } .club-card-centered .club-card-heading img { max-width: 54px; max-height: 54px; } }
