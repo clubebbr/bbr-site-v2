@@ -55,11 +55,11 @@ function initTabs() {
         });
     });
 
-    const initialTab = routeToTab[window.location.pathname.replace(/\\/$/, '')] || 'ranking';
+    const initialTab = routeToTab[window.location.pathname.replace(/\/$/, '')] || 'ranking';
     activateTab(initialTab);
 
     window.addEventListener('popstate', () => {
-        const tabId = routeToTab[window.location.pathname.replace(/\\/$/, '')] || 'ranking';
+        const tabId = routeToTab[window.location.pathname.replace(/\/$/, '')] || 'ranking';
         activateTab(tabId);
     });
 }
