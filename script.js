@@ -29,20 +29,38 @@ function initTabs() {
     const buttons = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
 
+    const routeToTab = {
+        '/ranqueado': 'ranqueada'
+    };
+
+    function activateTab(targetId) {
+        buttons.forEach(button => {
+            button.classList.toggle('active', button.getAttribute('data-tab') === targetId);
+        });
+        contents.forEach(content => {
+            content.classList.toggle('active', content.id === targetId);
+        });
+    }
+
     buttons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            buttons.forEach(b => b.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-
-            btn.classList.add('active');
             const targetId = btn.getAttribute('data-tab');
-            const targetContent = document.getElementById(targetId);
-            
-            if (targetContent) {
-                targetContent.classList.add('active');
+            activateTab(targetId);
+
+            const targetPath = targetId === 'ranqueada' ? '/ranqueado' : '/';
+            if (window.location.pathname !== targetPath) {
+                window.history.pushState({}, '', targetPath);
             }
         });
+    });
+
+    const initialTab = routeToTab[window.location.pathname.replace(/\\/$/, '')] || 'ranking';
+    activateTab(initialTab);
+
+    window.addEventListener('popstate', () => {
+        const tabId = routeToTab[window.location.pathname.replace(/\\/$/, '')] || 'ranking';
+        activateTab(tabId);
     });
 }
 async function verMembrosDoClube(tag) {
