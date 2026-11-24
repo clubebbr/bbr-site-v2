@@ -19,7 +19,7 @@ async function test(tag) {
     if (/Just a moment|cf-chl-|Attention Required/i.test(html.slice(0, 12000))) {
       return { tag: '#' + normalized, ok: false, status: response.status, error: 'Desafio anti-bot/Cloudflare' };
     }
-    const match = html.match(/(\\d[\\d,]*)\\s*<label\\b[^>]*>\\s*Skins\\s+Unlocked\\s*<\\/label>/i);
+    const match = html.match(/(\d[\d,]*)\s*<label\b[^>]*>\s*Skins\s+Unlocked\s*<\/label>/i);
     if (!match) return { tag: '#' + normalized, ok: false, status: response.status, bytes: html.length, error: 'Campo Skins Unlocked não encontrado no HTML' };
     return { tag: '#' + normalized, ok: true, status: response.status, total: Number(match[1].replace(/,/g, '')), bytes: html.length };
   } catch (error) {
