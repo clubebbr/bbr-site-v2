@@ -67,3 +67,18 @@
 #perfil .profile-stat-display strong{margin-top:0}
 #perfil .profile-stat-display .profile-stat-emblem{width:34px;height:34px;object-fit:contain;flex:none}
 @media(max-width:420px){#perfil .profile-stat-display{gap:5px}#perfil .profile-stat-display .profile-stat-emblem{width:27px;height:27px}}
+
+
+/* Campos de dados do perfil: roxo translúcido e mais leve */
+#perfil .profile-stat,
+#perfil .profile-rank-card,
+#perfil .profile-mini,
+#perfil .profile-brawler {
+    background: rgba(157, 78, 221, 0.17);
+    border-color: rgba(199, 125, 255, 0.28);
+}
+
+#perfil .profile-chip {
+    background: rgba(157, 78, 221, 0.20);
+    border-color: rgba(199, 125, 255, 0.38);
+}
