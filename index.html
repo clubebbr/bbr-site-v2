@@ -20,7 +20,6 @@
         <nav class="nav-tabs">
             <button class="tab-btn active" data-tab="ranking">Ranking Troféus</button>
             <button class="tab-btn" data-tab="ranqueada">Ranking Ranqueado</button>
-            <button class="tab-btn" data-tab="skins">Ranking Skins</button>
             <button class="tab-btn" data-tab="clubes">Nossos Clubes</button>
             <button class="tab-btn" data-tab="perfil">Perfil de Jogador</button>
         </nav>
@@ -66,17 +65,6 @@
                 </table>
             </div>
         </section>
-
-<!-- Ranking de Skins BBR: versão de testes -->
-<section id="skins" class="tab-content">
-  <h2>Ranking de Skins</h2>
-  <p class="subtext">Os maiores colecionadores dos clubes da BBR.</p>
-  <p id="skins-ranking-status" class="subtext" role="status">Abra esta aba para consultar os membros.</p>
-  <div class="ranking-search"><input type="search" id="skins-ranking-search" placeholder="🔎 Pesquisar jogador pelo nick..." aria-label="Pesquisar no ranking de skins"></div>
-  <div id="skins-ranking-podium" class="ranking-podium"></div>
-  <div class="table-card"><table class="data-table"><thead><tr><th>#</th><th>Jogador</th><th>Skins</th></tr></thead><tbody id="skins-ranking-tbody"><tr><td colspan="3">Aguardando consulta...</td></tr></tbody></table></div>
-  <p class="subtext">Fonte: Brawl Ace (não oficial). Os resultados dependem da disponibilidade do serviço.</p>
-</section>
 
 <!-- Ranking Ranqueado BBR -->
 <section id="ranqueada" class="tab-content">
@@ -189,7 +177,6 @@
 
     <script src="script.js?v=direct-ranked-route-20261123"></script>
     <script src="perfil.js?v=ranked-champion-20261118"></script>
-    <script src="ranking-skins.js?v=20261119-compact"></script>
     <!-- Modal de Membros do Clube -->
 <div id="club-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
     <div style="background: #1e1e2e; padding: 24px; border-radius: 12px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; color: white; position: relative;">
