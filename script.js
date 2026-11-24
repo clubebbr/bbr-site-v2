@@ -143,14 +143,6 @@ async function loadDashboardData() {
     
     const validClubs = clubResults.filter(club => club !== null);
 
-    const rankingUpdated = document.getElementById('ranking-updated');
-    if (rankingUpdated && validClubs.length > 0) {
-        const updateTime = new Date().toLocaleString('pt-BR', {
-            timeZone: 'America/Sao_Paulo'
-        });
-        rankingUpdated.textContent = 'Última atualização: ' + updateTime;
-    }
-
     if (clubGrid) {
         clubGrid.innerHTML = '';
         if (validClubs.length === 0) {
